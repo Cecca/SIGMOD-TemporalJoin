@@ -1,0 +1,165 @@
+durability: 500 exp type: syn-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R1_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R2_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R3_100KNew.csv
+total records: 10001/10001
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...30000 30000
+enum/output/sorting/update/delete time usage: 0.5138/3.23942/0.380734/0.650386/0.573189
+count time usage: 1.7e-05
+join size count: 580000
+total time usage: 4.97679
+answer size: 580000 time usage: 5.68572 filter time: 0.108678
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+intermediate result size: 130000
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 580000
+intermediate result size: 580000
+ground truth size: 580000 time usage: 19.5915 filter time: 0.108678
+size difference: 579637/579637
+durability: 1000 exp type: syn-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R1_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R2_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R3_100KNew.csv
+total records: 10001/10001
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...30000 30000
+enum/output/sorting/update/delete time usage: 0.441562/1.98973/0.363608/0.650697/0.572436
+count time usage: 1.3e-05
+join size count: 360000
+total time usage: 3.65443
+answer size: 360000 time usage: 4.25742 filter time: 0.065811
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+intermediate result size: 130000
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 360000
+intermediate result size: 360000
+ground truth size: 360000 time usage: 17.439 filter time: 0.065811
+size difference: 359828/359828
+durability: 1500 exp type: syn-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R1_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R2_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R3_100KNew.csv
+total records: 10001/10001
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...30000 30000
+enum/output/sorting/update/delete time usage: 0.373815/1.30465/0.477874/0.647561/0.571248
+count time usage: 9e-06
+join size count: 240000
+total time usage: 2.89727
+answer size: 240000 time usage: 3.68646 filter time: 0.060023
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+intermediate result size: 130000
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 240000
+intermediate result size: 240000
+ground truth size: 240000 time usage: 16.6956 filter time: 0.060023
+size difference: 239911/239911
+durability: 2000 exp type: syn-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R1_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R2_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R3_100KNew.csv
+total records: 10001/10001
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...30000 30000
+enum/output/sorting/update/delete time usage: 0.323918/0.577246/0.356284/0.684965/0.60388
+count time usage: 6e-06
+join size count: 90000
+total time usage: 2.19001
+answer size: 90000 time usage: 2.7883 filter time: 0.063533
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+intermediate result size: 130000
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 90000
+intermediate result size: 90000
+ground truth size: 90000 time usage: 15.9914 filter time: 0.063533
+size difference: 89982/89982
+durability: 2500 exp type: syn-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R1_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R2_100KNew.csv
+total records: 10001/10001
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-star-join/NewData/100K/R3_100KNew.csv
+total records: 10001/10001
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...30000 30000
+enum/output/sorting/update/delete time usage: 0.255143/0.094668/0.355253/0.695823/0.603646
+count time usage: 2e-06
+join size count: 10000
+total time usage: 1.64928
+answer size: 10000 time usage: 2.24659 filter time: 0.063344
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+intermediate result size: 130000
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 10000
+intermediate result size: 10000
+ground truth size: 10000 time usage: 15.3124 filter time: 0.063344
+size difference: 10000/10000

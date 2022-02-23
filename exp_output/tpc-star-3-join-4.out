@@ -1,0 +1,70 @@
+durability: 190 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-4.txt
+total records: 99652/99652
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-4.txt
+total records: 99652/99652
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-4.txt
+total records: 99652/99652
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...3054 3054
+enum/output/sorting/update/delete time usage: 0.071909/0.045475/0.031176/0.062796/0.057018
+count time usage: 0.000891
+join size count: 3268
+total time usage: 0.237198
+previous answer size: 3268
+answer size: 330 time usage: 0.294299 filter time: 0.009748
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 1658
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 3268
+intermediate result size: 3268
+previous answer size: 3268
+ground truth size: 330 time usage: 0.038632 filter time: 0.009748
+size difference: 55/55
+durability: 150 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-4.txt
+total records: 99652/99652
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-4.txt
+total records: 99652/99652
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-4.txt
+total records: 99652/99652
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...12870 12870
+enum/output/sorting/update/delete time usage: 0.559311/0.760198/0.160302/0.266272/0.27924
+count time usage: 0.006168
+join size count: 88098
+total time usage: 1.86502
+previous answer size: 88098
+answer size: 43338 time usage: 2.14662 filter time: 0.030611
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 17780
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 88098
+intermediate result size: 88098
+previous answer size: 88098
+ground truth size: 43338 time usage: 0.615444 filter time: 0.030611
+size difference: 7223/7223

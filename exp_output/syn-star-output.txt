@@ -1,0 +1,74 @@
+=======No Intermidate Result=======
+enum/output/sorting/update/delete time usage: 0.207408/2.5e-05/0.362694/0.640414/0.654011
+total time usage: 1.50186
+answer size: 1 time usage: 2.12973 filter time: 60308
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+ground truth size: 1 time usage: 0.054439 filter time: 60308
+size difference: 1/1
+=======10K Intermidate Result=======
+enum/output/sorting/update/delete time usage: 0.213645/2.4e-05/0.360311/0.639514/0.650075
+total time usage: 1.50326
+answer size: 1 time usage: 2.12455 filter time: 60196
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+ground truth size: 1 time usage: 0.133093 filter time: 60196
+size difference: 1/1
+=======100K Intermidate Result=======
+enum/output/sorting/update/delete time usage: 0.20606/2.6e-05/0.339891/0.60329/0.622831
+total time usage: 1.43221
+answer size: 1 time usage: 2.01576 filter time: 56777
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+ground truth size: 1 time usage: 9.6137 filter time: 56777
+size difference: 1/1
+=======1M Intermidate Result=======
+enum/output/sorting/update/delete time usage: 0.212261/2.4e-05/0.358367/0.62867/0.647506
+total time usage: 1.48846
+answer size: 1 time usage: 2.10969 filter time: 59924
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+ground truth size: 1 time usage: 84.3767 filter time: 59924
+size difference: 1/1
+=======10M Intermidate Result=======
+enum/output/sorting/update/delete time usage: 0.203871/2.4e-05/0.33788/0.595947/0.547521
+total time usage: 1.34736
+answer size: 1 time usage: 1.93772 filter time: 0.057093
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+ground truth size: 1 time usage: 733.284 filter time: 0.057093
+size difference: 1/1
+=======100M Intermidate Result=======
+enum/output/sorting/update/delete time usage: 0.216741/2.7e-05/0.356322/0.62613/0.65198
+total time usage: 1.49488
+answer size: 1 time usage: 2.11759 filter time: 60246
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using temporal join
+Killed

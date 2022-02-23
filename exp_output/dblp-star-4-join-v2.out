@@ -1,0 +1,259 @@
+durability: 16 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_4_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+Done. Release memory...3376 3376
+enum/output/sorting/update/delete time usage: 0.066094/0.039627/0.038474/0.071406/0.068827
+total time usage: 0.245954
+previous answer size: 1996
+answer size: 0 time usage: 0.313374 filter time: 1.03132
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+previous answer size: 1996
+ground truth size: 0 time usage: 0.0388 filter time: 1.03132
+size difference: 0/0
+durability: 14 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_4_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+Done. Release memory...7352 7352
+enum/output/sorting/update/delete time usage: 0.154252/0.101117/0.082847/0.152923/0.151582
+total time usage: 0.559874
+previous answer size: 6440
+answer size: 96 time usage: 0.704029 filter time: 1.7489
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+previous answer size: 6440
+ground truth size: 96 time usage: 0.093066 filter time: 1.7489
+size difference: 4/4
+durability: 12 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_4_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+Done. Release memory...15488 15488
+enum/output/sorting/update/delete time usage: 0.34471/0.276942/0.198427/0.335808/0.333304
+total time usage: 1.29076
+previous answer size: 19956
+answer size: 1560 time usage: 1.61766 filter time: 1.0294
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+previous answer size: 19956
+ground truth size: 1560 time usage: 0.259372 filter time: 1.0294
+size difference: 65/65
+durability: 10 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_4_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+Done. Release memory...34968 34968
+enum/output/sorting/update/delete time usage: 0.876988/0.799864/0.498237/0.797236/0.809747
+total time usage: 3.28383
+previous answer size: 67392
+answer size: 5592 time usage: 4.11183 filter time: 1.06858
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+previous answer size: 67392
+ground truth size: 5592 time usage: 0.796789 filter time: 1.06858
+size difference: 233/233
+durability: 8 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_4_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+Done. Release memory...89400 89400
+enum/output/sorting/update/delete time usage: 2.63599/4.30265/1.44599/2.13952/2.16562
+total time usage: 11.2438
+previous answer size: 464616
+answer size: 131712 time usage: 13.5733 filter time: 1.19341
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+previous answer size: 464616
+ground truth size: 131712 time usage: 4.01653 filter time: 1.19341
+size difference: 5488/5488
+durability: 6 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_4_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+Done. Release memory...276080 276080
+enum/output/sorting/update/delete time usage: 9.77458/20.3909/4.96413/7.04357/7.04349
+total time usage: 44.2526
+previous answer size: 2329866
+answer size: 683208 time usage: 52.0054 filter time: 1.6139
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+previous answer size: 2329866
+ground truth size: 683208 time usage: 21.341 filter time: 1.6139
+size difference: 28467/28467
+durability: 4 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_4_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+Done. Release memory...1179784 1179784
+enum/output/sorting/update/delete time usage: 52.3105/256.068/23.2319/31.0547/30.7662
+total time usage: 370.2
+previous answer size: 38239386
+answer size: 18973416 time usage: 405.343 filter time: 3.61419
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+previous answer size: 38239386
+ground truth size: 18973416 time usage: 317.824 filter time: 3.61419
+size difference: 790559/790559

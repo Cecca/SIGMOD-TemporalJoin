@@ -1,0 +1,216 @@
+durability: 16 exp type: dblp-line-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+intermediate result size: 988
+===round 2===
+join attrs:2,
+union attrs:1,2,3,
+intermediate result size: 1228
+intermediate result size: 1228
+===round 1===
+join attrs:4,
+union attrs:3,4,5,
+using sort-merge join
+intermediate result size: 988
+===round 2===
+join attrs:5,
+union attrs:3,4,5,6,
+intermediate result size: 1228
+intermediate result size: 1228
+===round 1===
+join attrs:7,
+union attrs:6,7,8,
+using sort-merge join
+intermediate result size: 988
+===round 2===
+join attrs:8,
+union attrs:6,7,8,
+intermediate result size: 1228
+intermediate result size: 1228
+indexing time: 0.009091
+query time: 0.019808
+total time usage: 0.028899
+time usage: 0.114078
+answer size: 18795 time usage: 0.121481 filter time: 3.8126
+durability: 14 exp type: dblp-line-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+intermediate result size: 2312
+===round 2===
+join attrs:2,
+union attrs:1,2,3,
+intermediate result size: 3270
+intermediate result size: 3270
+===round 1===
+join attrs:4,
+union attrs:3,4,5,
+using sort-merge join
+intermediate result size: 2312
+===round 2===
+join attrs:5,
+union attrs:3,4,5,6,
+intermediate result size: 3270
+intermediate result size: 3270
+===round 1===
+join attrs:7,
+union attrs:6,7,8,
+using sort-merge join
+intermediate result size: 2312
+===round 2===
+join attrs:8,
+union attrs:6,7,8,
+intermediate result size: 3270
+intermediate result size: 3270
+indexing time: 0.021546
+query time: 0.066226
+total time usage: 0.087772
+time usage: 0.302272
+answer size: 703746 time usage: 0.319406 filter time: 3.84809
+durability: 12 exp type: dblp-line-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+intermediate result size: 5124
+===round 2===
+join attrs:2,
+union attrs:1,2,3,
+intermediate result size: 7920
+intermediate result size: 7920
+===round 1===
+join attrs:4,
+union attrs:3,4,5,
+using sort-merge join
+intermediate result size: 5124
+===round 2===
+join attrs:5,
+union attrs:3,4,5,6,
+intermediate result size: 7920
+intermediate result size: 7920
+===round 1===
+join attrs:7,
+union attrs:6,7,8,
+using sort-merge join
+intermediate result size: 5124
+===round 2===
+join attrs:8,
+union attrs:6,7,8,
+intermediate result size: 7920
+intermediate result size: 7920
+indexing time: 0.04961
+query time: 0.228698
+total time usage: 0.278308
+time usage: 0.784899
+answer size: 16963292 time usage: 0.825859 filter time: 3.69929
+durability: 10 exp type: dblp-line-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+intermediate result size: 12912
+===round 2===
+join attrs:2,
+union attrs:1,2,3,
+intermediate result size: 22126
+intermediate result size: 22126
+===round 1===
+join attrs:4,
+union attrs:3,4,5,
+using sort-merge join
+intermediate result size: 12912
+===round 2===
+join attrs:5,
+union attrs:3,4,5,6,
+intermediate result size: 22126
+intermediate result size: 22126
+===round 1===
+join attrs:7,
+union attrs:6,7,8,
+using sort-merge join
+intermediate result size: 12912
+===round 2===
+join attrs:8,
+union attrs:6,7,8,
+intermediate result size: 22126
+intermediate result size: 22126
+indexing time: 0.119763
+query time: 0.768977
+total time usage: 0.88874
+time usage: 2.24789
+answer size: 44008351 time usage: 2.34727 filter time: 4.04016

@@ -1,0 +1,70 @@
+durability: 190 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-3.txt
+total records: 248035/248035
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-3.txt
+total records: 248035/248035
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-3.txt
+total records: 248035/248035
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...7917 7917
+enum/output/sorting/update/delete time usage: 0.202243/0.121713/0.09694/0.163631/0.161533
+count time usage: 0.002479
+join size count: 9041
+total time usage: 0.64912
+previous answer size: 9041
+answer size: 1146 time usage: 0.8258 filter time: 0.025209
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 4391
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 9041
+intermediate result size: 9041
+previous answer size: 9041
+ground truth size: 1146 time usage: 0.109316 filter time: 0.025209
+size difference: 191/191
+durability: 150 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-3.txt
+total records: 248035/248035
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-3.txt
+total records: 248035/248035
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-3.txt
+total records: 248035/248035
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...32307 32307
+enum/output/sorting/update/delete time usage: 1.41755/1.85398/0.464414/0.688456/0.730207
+count time usage: 0.014542
+join size count: 216509
+total time usage: 4.69019
+previous answer size: 216509
+answer size: 104844 time usage: 5.51246 filter time: 0.07304
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 44401
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 216509
+intermediate result size: 216509
+previous answer size: 216509
+ground truth size: 104844 time usage: 1.5495 filter time: 0.07304
+size difference: 17474/17474

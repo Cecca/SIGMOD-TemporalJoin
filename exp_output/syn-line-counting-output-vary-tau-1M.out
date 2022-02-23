@@ -1,0 +1,66 @@
+durability: 4500 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.021974
+query time: 0.226351
+total time usage: 0.248325
+answer size: 120000 time usage: 0.264596 filter time: 0.063626
+durability: 4000 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.021979
+query time: 0.297951
+total time usage: 0.31993
+answer size: 420000 time usage: 0.336409 filter time: 0.064179
+durability: 3500 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.022027
+query time: 0.351448
+total time usage: 0.373475
+answer size: 870000 time usage: 0.389971 filter time: 0.063902
+durability: 3000 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.021912
+query time: 0.320862
+total time usage: 0.342774
+answer size: 1400000 time usage: 0.359265 filter time: 0.063701
+durability: 2500 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.021986
+query time: 0.369112
+total time usage: 0.391098
+answer size: 2280000 time usage: 0.4074 filter time: 0.063326
+durability: 2000 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.021715
+query time: 0.475231
+total time usage: 0.496946
+answer size: 3480000 time usage: 0.513372 filter time: 0.063877

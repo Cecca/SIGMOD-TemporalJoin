@@ -1,0 +1,206 @@
+durability: 12 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_6_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+26 (0,5,)
+4 (0,5,)
+27 (0,6,)
+5 (0,6,)
+Done. Release memory...23232 23232
+enum/output/sorting/update/delete time usage: 0.535541/2.30781/0.300105/0.484565/0.530372
+count time usage: 0.0038
+join size count: 270444
+total time usage: 3.85829
+previous answer size: 270444
+answer size: 2160 time usage: 4.36027 filter time: 1.44692
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 5124
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 8588
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+intermediate result size: 19956
+===round 4===
+join attrs:0,
+union attrs:0,1,2,3,4,5,
+intermediate result size: 64772
+===round 5===
+join attrs:0,
+union attrs:0,1,2,3,4,5,6,
+intermediate result size: 270444
+intermediate result size: 270444
+previous answer size: 270444
+ground truth size: 2160 time usage: 2.11761 filter time: 1.44692
+size difference: 3/3
+durability: 10 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_6_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+26 (0,5,)
+4 (0,5,)
+27 (0,6,)
+5 (0,6,)
+Done. Release memory...52452 52452
+enum/output/sorting/update/delete time usage: 1.41253/8.04703/0.751183/1.16717/1.27936
+count time usage: 0.00998
+join size count: 968952
+total time usage: 11.9061
+previous answer size: 968952
+answer size: 5040 time usage: 13.142 filter time: 1.52354
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 12912
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 25230
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+intermediate result size: 67392
+===round 4===
+join attrs:0,
+union attrs:0,1,2,3,4,5,
+intermediate result size: 233622
+===round 5===
+join attrs:0,
+union attrs:0,1,2,3,4,5,6,
+intermediate result size: 968952
+intermediate result size: 968952
+previous answer size: 968952
+ground truth size: 5040 time usage: 7.33087 filter time: 1.52354
+size difference: 7/7
+durability: 8 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_6_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+26 (0,5,)
+4 (0,5,)
+27 (0,6,)
+5 (0,6,)
+Done. Release memory...134100 134100
+enum/output/sorting/update/delete time usage: 4.40295/178.122/2.18518/3.10424/3.45552
+count time usage: 0.02943
+join size count: 27148272
+total time usage: 189.085
+previous answer size: 27148272
+answer size: 4107600 time usage: 192.695 filter time: 1.69324
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 39432
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 105426
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+intermediate result size: 464616
+===round 4===
+join attrs:0,
+union attrs:0,1,2,3,4,5,
+intermediate result size: 3128970
+===round 5===
+join attrs:0,
+union attrs:0,1,2,3,4,5,6,
+intermediate result size: 27148272
+intermediate result size: 27148272
+previous answer size: 27148272
+ground truth size: 4107600 time usage: 167.863 filter time: 1.69324
+size difference: 5705/5705
+durability: 6 exp type: dblp-star-k
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_6_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+26 (0,5,)
+4 (0,5,)
+27 (0,6,)
+5 (0,6,)
+Bus error (core dumped)
+slurmstepd-linux2: error: Step 802376.4294967294 hit memory limit at least once during execution. This may or may not result in some failure.

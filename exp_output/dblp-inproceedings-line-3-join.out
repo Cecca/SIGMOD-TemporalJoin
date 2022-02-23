@@ -1,0 +1,138 @@
+durability: 16 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+filtered table size : 588
+indexing time: 0.003963
+query time: 0.009915
+total time usage: 0.013878
+previous answer size: 814
+answer size: 226 time usage: 0.678684
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+previous answer size: 814
+ground truth size: 226 time usage: 0.70216
+size difference: 190/190
+durability: 14 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+filtered table size : 1300
+indexing time: 0.009113
+query time: 0.023769
+total time usage: 0.032882
+previous answer size: 1996
+answer size: 696 time usage: 0.706845
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+previous answer size: 1996
+ground truth size: 696 time usage: 0.763446
+size difference: 580/580
+durability: 12 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+filtered table size : 2696
+indexing time: 0.019675
+query time: 0.058414
+total time usage: 0.078089
+previous answer size: 5118
+answer size: 2422 time usage: 0.766127
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+previous answer size: 5118
+ground truth size: 2422 time usage: 0.906668
+size difference: 2090/2090
+durability: 10 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+filtered table size : 5754
+indexing time: 0.042409
+query time: 0.139497
+total time usage: 0.181906
+previous answer size: 12806
+answer size: 7052 time usage: 0.945931
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+previous answer size: 12806
+ground truth size: 7052 time usage: 1.29015
+size difference: 6192/6192
+durability: 8 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+filtered table size : 13786
+indexing time: 0.100106
+query time: 0.451181
+total time usage: 0.551287
+previous answer size: 50362
+answer size: 36576 time usage: 1.59438
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+previous answer size: 50362
+ground truth size: 36576 time usage: 2.6701
+size difference: 32904/32904
+durability: 6 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+load tables from /usr/project/xtmp/jygao/DBLP/articles_aggregate_year.txt
+total records: 17684304/17684304
+filtered table size : 38570
+indexing time: 0.269354
+query time: 1.47573
+total time usage: 1.74508
+previous answer size: 175212
+answer size: 136642 time usage: 3.82088
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+previous answer size: 175212
+ground truth size: 136642 time usage: 7.57885
+size difference: 123490/123490

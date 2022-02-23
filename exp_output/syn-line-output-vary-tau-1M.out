@@ -1,0 +1,138 @@
+durability: 4500 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.019044
+query time: 34.6266
+total time usage: 34.6457
+answer size: 120000 time usage: 34.6632 filter time: 0.061669
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 330000
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 120000
+intermediate result size: 120000
+ground truth size: 120000 time usage: 49.5599 filter time: 0.061669
+size difference: 119970/119970
+durability: 4000 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.018279
+query time: 45.1433
+total time usage: 45.1616
+answer size: 440000 time usage: 45.1783 filter time: 0.060243
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 424600
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 440000
+intermediate result size: 440000
+ground truth size: 440000 time usage: 65.6304 filter time: 0.060243
+size difference: 439757/439757
+durability: 3500 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.018166
+query time: 52.5392
+total time usage: 52.5574
+answer size: 870000 time usage: 52.5737 filter time: 0.059107
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 470000
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 870000
+intermediate result size: 870000
+ground truth size: 870000 time usage: 74.9592 filter time: 0.059107
+size difference: 869275/869275
+durability: 3000 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.019884
+query time: 57.2505
+total time usage: 57.2704
+answer size: 1400000 time usage: 57.2885 filter time: 0.064517
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 530000
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 1400000
+intermediate result size: 1400000
+ground truth size: 1400000 time usage: 79.8073 filter time: 0.064517
+size difference: 1398490/1398490
+durability: 2500 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.018744
+query time: 62.2467
+total time usage: 62.2655
+answer size: 2280000 time usage: 62.2816 filter time: 0.061221
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 598200
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 2280000
+intermediate result size: 2280000
+ground truth size: 2280000 time usage: 91.2716 filter time: 0.061221
+size difference: 2276895/2276895
+durability: 2000 exp type: syn-line
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R1_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R2_1MNew.csv
+total records: 10000/10000
+load tables from /home/home1/jygao/workspace/DurableJoin/data/test-line-join/LineNewData/1M/R3_1MNew.csv
+total records: 10000/10000
+indexing time: 0.019633
+query time: 71.5747
+total time usage: 71.5943
+answer size: 3480000 time usage: 71.611 filter time: 0.063542
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 709700
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 3480000
+intermediate result size: 3480000
+ground truth size: 3480000 time usage: 98.3445 filter time: 0.063542
+size difference: 3474122/3474122

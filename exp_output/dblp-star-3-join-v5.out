@@ -1,0 +1,245 @@
+durability: 16 exp type: dblp-star
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...2532 2532
+enum/output/sorting/update/delete time usage: 0.04482/0.021589/0.024316/0.048584/0.044933
+count time usage: 0.000665
+join size count: 1300
+total time usage: 0.159926
+previous answer size: 1300
+answer size: 24 time usage: 0.205531 filter time: 0.712554
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 988
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 1300
+intermediate result size: 1300
+previous answer size: 1300
+ground truth size: 24 time usage: 0.02236 filter time: 0.712554
+size difference: 4/4
+durability: 14 exp type: dblp-star
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...5514 5514
+enum/output/sorting/update/delete time usage: 0.104979/0.053343/0.059078/0.111997/0.1024
+count time usage: 0.001418
+join size count: 3458
+total time usage: 0.372719
+previous answer size: 3458
+answer size: 198 time usage: 0.477144 filter time: 0.721415
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 2312
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 3458
+intermediate result size: 3458
+previous answer size: 3458
+ground truth size: 198 time usage: 0.054523 filter time: 0.721415
+size difference: 33/33
+durability: 12 exp type: dblp-star
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...11616 11616
+enum/output/sorting/update/delete time usage: 0.237962/0.123366/0.138728/0.238867/0.226862
+count time usage: 0.002793
+join size count: 8588
+total time usage: 0.827057
+previous answer size: 8588
+answer size: 960 time usage: 1.06585 filter time: 0.734028
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 5124
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 8588
+intermediate result size: 8588
+previous answer size: 8588
+ground truth size: 960 time usage: 0.132449 filter time: 0.734028
+size difference: 160/160
+durability: 10 exp type: dblp-star
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...26226 26226
+enum/output/sorting/update/delete time usage: 0.59737/0.333032/0.351887/0.577681/0.539188
+count time usage: 0.007515
+join size count: 25230
+total time usage: 2.04727
+previous answer size: 25230
+answer size: 3978 time usage: 2.64037 filter time: 0.775805
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 12912
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 25230
+intermediate result size: 25230
+previous answer size: 25230
+ground truth size: 3978 time usage: 0.349435 filter time: 0.775805
+size difference: 663/663
+durability: 8 exp type: dblp-star
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...67050 67050
+enum/output/sorting/update/delete time usage: 1.75266/1.15478/0.992195/1.54182/1.4587
+count time usage: 0.020499
+join size count: 105426
+total time usage: 5.90795
+previous answer size: 105426
+answer size: 31830 time usage: 7.5922 filter time: 0.856084
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 39432
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 105426
+intermediate result size: 105426
+previous answer size: 105426
+ground truth size: 31830 time usage: 1.20038 filter time: 0.856084
+size difference: 5305/5305
+durability: 6 exp type: dblp-star
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...207060 207060
+enum/output/sorting/update/delete time usage: 6.23279/4.65913/3.45157/5.00652/4.72004
+count time usage: 0.068134
+join size count: 472712
+total time usage: 20.6185
+previous answer size: 472712
+answer size: 173370 time usage: 26.2446 filter time: 1.17876
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 145794
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 472712
+intermediate result size: 472712
+previous answer size: 472712
+ground truth size: 173370 time usage: 5.1963 filter time: 1.17876
+size difference: 28895/28895
+durability: 4 exp type: dblp-star
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...884838 884838
+enum/output/sorting/update/delete time usage: 33.3036/37.6165/16.8438/23.1039/21.5581
+count time usage: 0.316099
+join size count: 4544104
+total time usage: 115.582
+previous answer size: 4544104
+answer size: 2469906 time usage: 141.552 filter time: 2.76776
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 888030
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 4544104
+intermediate result size: 4544104
+previous answer size: 4544104
+ground truth size: 2469906 time usage: 45.7558 filter time: 2.76776
+size difference: 411651/411651

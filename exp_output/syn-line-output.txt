@@ -1,0 +1,69 @@
+===========================No Intermediate Result
+indexing time: 0.032018
+query time: 1.28641
+total time usage: 1.31843
+answer size: 1 time usage: 1.35147 filter time: 0.109683
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 1
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 1
+intermediate result size: 1
+ground truth size: 1 time usage: 0.04947 filter time: 0.109683
+size difference: 1/1
+===========================10K
+indexing time: 0.033341
+query time: 1.25405
+total time usage: 1.28739
+answer size: 1 time usage: 1.31994 filter time: 0.109459
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 20001
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 1
+intermediate result size: 1
+ground truth size: 1 time usage: 1.63041 filter time: 0.109459
+size difference: 1/1
+===========================100K
+indexing time: 0.034594
+query time: 1.13157
+total time usage: 1.16617
+answer size: 1 time usage: 1.19918 filter time: 0.110102
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 110001
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 1
+intermediate result size: 1
+ground truth size: 1 time usage: 10.7713 filter time: 0.110102
+size difference: 1/1
+===========================1M
+indexing time: 0.034552
+query time: 1.65484
+total time usage: 1.68939
+answer size: 1 time usage: 1.72216 filter time: 0.109468
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using temporal join
+intermediate result size: 1010001
+===round 2===
+join attrs:2,
+union attrs:1,2,
+intermediate result size: 1
+intermediate result size: 1
+ground truth size: 1 time usage: 81.5442 filter time: 0.109468
+size difference: 1/1
+===========================10M

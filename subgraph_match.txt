@@ -1,0 +1,37 @@
+RapidMatching
+
+Line3 - 
+Load graphs time (seconds): 3.134634
+Query time (seconds): 19.324042
+#Embeddings: 2885214209
+
+Line4 - 
+Load graphs time (seconds): 3.080992
+Query time (seconds): 458.716259
+#Embeddings: 118220527577
+
+Line5 - 
+Load graphs time (seconds): 2.537943
+Query time (seconds): 4802.932272 (over time limit)
+#Embeddings: 1579474265118
+
+Star3 - 
+Load graphs time (seconds): 3.118895
+Query time (seconds): 24.807782
+#Embeddings: 4779649152
+
+Star4 - 
+Load graphs time (seconds): 3.150001
+Query time (seconds): 1486.577617
+#Embeddings: 552866745600
+
+Star5 - 
+Load graphs time (seconds): 3.183496
+Query time (seconds): 4803.156160 (over time limit)
+#Embeddings: 1627863506565
+
+Cycle4 - 
+Load graphs time (seconds): 2.793306
+Query time (seconds): 654.927577
+#Embeddings: 9430373529
+

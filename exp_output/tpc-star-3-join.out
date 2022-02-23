@@ -1,0 +1,210 @@
+durability: 200 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...2514 2514
+enum/output/sorting/update/delete time usage: 0.028889/0.01183/0.01985/0.031967/0.03136
+count time usage: 0.000241
+join size count: 916
+total time usage: 0.104046
+previous answer size: 916
+answer size: 0 time usage: 0.138534 filter time: 0.034832
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 864
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 916
+intermediate result size: 916
+previous answer size: 916
+ground truth size: 0 time usage: 0.015512 filter time: 0.034832
+size difference: 0/0
+durability: 190 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...30510 30510
+enum/output/sorting/update/delete time usage: 0.568132/0.310681/0.343983/0.450971/0.473715
+count time usage: 0.003886
+join size count: 33186
+total time usage: 1.8035
+previous answer size: 33186
+answer size: 3846 time usage: 2.34342 filter time: 0.07821
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 16560
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 33186
+intermediate result size: 33186
+previous answer size: 33186
+ground truth size: 3846 time usage: 0.344932 filter time: 0.07821
+size difference: 641/641
+durability: 180 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...118386 118386
+enum/output/sorting/update/delete time usage: 3.68519/4.04144/1.54822/1.81203/2.02147
+count time usage: 0.023219
+join size count: 625296
+total time usage: 11.5601
+previous answer size: 625296
+answer size: 270720 time usage: 13.9652 filter time: 0.215863
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 144500
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 625296
+intermediate result size: 625296
+previous answer size: 625296
+ground truth size: 270720 time usage: 3.90634 filter time: 0.215863
+size difference: 45120/45120
+durability: 170 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...127665 127665
+enum/output/sorting/update/delete time usage: 4.28177/5.24019/1.67723/1.98053/2.17185
+count time usage: 0.025996
+join size count: 866067
+total time usage: 13.6743
+previous answer size: 866067
+answer size: 422904 time usage: 16.2873 filter time: 0.226981
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 176091
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 866067
+intermediate result size: 866067
+previous answer size: 866067
+ground truth size: 422904 time usage: 4.77153 filter time: 0.226981
+size difference: 70484/70484
+durability: 160 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...127665 127665
+enum/output/sorting/update/delete time usage: 4.27226/5.24341/1.67666/1.9817/2.17373
+count time usage: 0.026849
+join size count: 866067
+total time usage: 13.6711
+previous answer size: 866067
+answer size: 422904 time usage: 16.2824 filter time: 0.225748
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 176091
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 866067
+intermediate result size: 866067
+previous answer size: 866067
+ground truth size: 422904 time usage: 4.7594 filter time: 0.225748
+size difference: 70484/70484
+durability: 150 exp type: tpc-star
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+Done. Release memory...127665 127665
+enum/output/sorting/update/delete time usage: 4.25193/5.24373/1.67623/1.98918/2.17466
+count time usage: 0.027425
+join size count: 866067
+total time usage: 13.6595
+previous answer size: 866067
+answer size: 422904 time usage: 16.2673 filter time: 0.226366
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 176091
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 866067
+intermediate result size: 866067
+previous answer size: 866067
+ground truth size: 422904 time usage: 4.766 filter time: 0.226366
+size difference: 70484/70484

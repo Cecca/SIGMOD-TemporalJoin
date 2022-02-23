@@ -1,0 +1,29 @@
+durability: 150 exp type: tpc-star-k
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC.txt
+total records: 989884/989884
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_6_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+26 (0,5,)
+4 (0,5,)
+27 (0,6,)
+5 (0,6,)
+Killed
+slurmstepd-linux1: error: Step 806459.4294967294 hit memory limit at least once during execution. This may or may not result in some failure.

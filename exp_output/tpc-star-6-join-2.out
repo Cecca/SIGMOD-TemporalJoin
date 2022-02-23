@@ -1,0 +1,57 @@
+durability: 150 exp type: tpc-star-k
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-2.txt
+total records: 495493/495493
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-2.txt
+total records: 495493/495493
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-2.txt
+total records: 495493/495493
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-2.txt
+total records: 495493/495493
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-2.txt
+total records: 495493/495493
+load tables from /home/home1/jygao/workspace/DurableJoin/data/TPC/TPC-2.txt
+total records: 495493/495493
+load join tree structure from /home/home1/jygao/workspace/DurableJoin/join_tree_6_star_join.dat
+30 (0,)
+10 (0,1,)
+0 (0,1,)
+15 (0,2,)
+1 (0,2,)
+20 (0,3,)
+2 (0,3,)
+25 (0,4,)
+3 (0,4,)
+26 (0,5,)
+4 (0,5,)
+27 (0,6,)
+5 (0,6,)
+Done. Release memory...128796 128796
+enum/output/sorting/update/delete time usage: 7.74523/523.517/1.67866/1.98386/2.75735
+count time usage: 0.036164
+join size count: 105097480
+total time usage: 536.003
+previous answer size: 105097480
+answer size: 7467120 time usage: 538.668 filter time: 0.22975
+===round 1===
+join attrs:0,
+union attrs:0,1,2,
+using sort-merge join
+intermediate result size: 88840
+===round 2===
+join attrs:0,
+union attrs:0,1,2,3,
+intermediate result size: 435466
+===round 3===
+join attrs:0,
+union attrs:0,1,2,3,4,
+intermediate result size: 2436304
+===round 4===
+join attrs:0,
+union attrs:0,1,2,3,4,5,
+intermediate result size: 15233506
+===round 5===
+join attrs:0,
+union attrs:0,1,2,3,4,5,6,
+intermediate result size: 105097480
+Bus error (core dumped)
+slurmstepd-linux53: error: Step 806460.4294967294 hit memory limit at least once during execution. This may or may not result in some failure.

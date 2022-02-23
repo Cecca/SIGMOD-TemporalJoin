@@ -1,0 +1,182 @@
+durability: 16 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 844
+indexing time: 0.006335
+query time: 0.015228
+total time usage: 0.021563
+previous answer size: 1228
+answer size: 384 time usage: 0.027638 filter time: 0.712724
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+max intermediate result size: 1228
+previous answer size: 1228
+ground truth size: 384 time usage: 0.023967 filter time: 0.712724
+size difference: 320/320
+durability: 14 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 1838
+indexing time: 0.013931
+query time: 0.037045
+total time usage: 0.050976
+previous answer size: 3270
+answer size: 1432 time usage: 0.064428 filter time: 0.716815
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+max intermediate result size: 3270
+previous answer size: 3270
+ground truth size: 1432 time usage: 0.059803 filter time: 0.716815
+size difference: 1212/1212
+durability: 12 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 3872
+indexing time: 0.030337
+query time: 0.085715
+total time usage: 0.116052
+previous answer size: 7920
+answer size: 4048 time usage: 0.146184 filter time: 0.74742
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+max intermediate result size: 7920
+previous answer size: 7920
+ground truth size: 4048 time usage: 0.138174 filter time: 0.74742
+size difference: 3548/3548
+durability: 10 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 8742
+indexing time: 0.067843
+query time: 0.22585
+total time usage: 0.293693
+previous answer size: 22126
+answer size: 13384 time usage: 0.362268 filter time: 0.767127
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+max intermediate result size: 22126
+previous answer size: 22126
+ground truth size: 13384 time usage: 0.367997 filter time: 0.767127
+size difference: 11804/11804
+durability: 8 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 22350
+indexing time: 0.167127
+query time: 0.771073
+total time usage: 0.9382
+previous answer size: 90170
+answer size: 67820 time usage: 1.12298 filter time: 0.851312
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+max intermediate result size: 90170
+previous answer size: 90170
+ground truth size: 67820 time usage: 1.25067 filter time: 0.851312
+size difference: 61120/61120
+durability: 6 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 69020
+indexing time: 0.497643
+query time: 2.90877
+total time usage: 3.40641
+previous answer size: 366274
+answer size: 297254 time usage: 3.99345 filter time: 1.17448
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+max intermediate result size: 366274
+previous answer size: 366274
+ground truth size: 297254 time usage: 5.03158 filter time: 1.17448
+size difference: 269714/269714
+durability: 4 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 294946
+indexing time: 1.82356
+query time: 20.3868
+total time usage: 22.2104
+previous answer size: 3272216
+answer size: 2977270 time usage: 24.8524 filter time: 2.61911
+===round 1===
+join attrs:1,
+union attrs:1,2,
+using sort-merge join
+===round 2===
+join attrs:2,
+union attrs:1,2,
+max intermediate result size: 3272216
+previous answer size: 3272216
+ground truth size: 2977270 time usage: 36.7525 filter time: 2.61911
+size difference: 2764958/2764958
+durability: 2 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 2390712
+indexing time: 11.1244
+query time: 578.313
+total time usage: 589.437
+previous answer size: 124975058
+Killed
+slurmstepd-linux3: error: Step 801921.4294967294 hit memory limit at least once during execution. This may or may not result in some failure.

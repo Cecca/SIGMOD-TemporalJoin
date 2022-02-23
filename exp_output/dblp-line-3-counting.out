@@ -1,0 +1,84 @@
+durability: 16 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 844
+indexing time: 0.005561
+query time: 0.007561
+total time usage: 0.013122
+answer size: 914 time usage: 0.017698 filter time: 0.525313
+durability: 14 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 1838
+indexing time: 0.011817
+query time: 0.016936
+total time usage: 0.028753
+answer size: 2505 time usage: 0.03856 filter time: 0.454853
+durability: 12 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 3872
+indexing time: 0.027256
+query time: 0.040867
+total time usage: 0.068123
+answer size: 6248 time usage: 0.090767 filter time: 0.498895
+durability: 10 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 8742
+indexing time: 0.05835
+query time: 0.093875
+total time usage: 0.152225
+answer size: 17435 time usage: 0.2018 filter time: 0.494554
+durability: 8 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 22350
+indexing time: 0.18403
+query time: 0.306696
+total time usage: 0.490726
+answer size: 62108 time usage: 0.642308 filter time: 0.618195
+durability: 6 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 69020
+indexing time: 0.475252
+query time: 1.00375
+total time usage: 1.479
+answer size: 312680 time usage: 1.94129 filter time: 0.862723
+durability: 4 exp type: dblp-line
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+load tables from /usr/project/xtmp/jygao/DBLP/inproceedings_aggregate_year.txt
+total records: 17716758/17716758
+filtered table size : 294946
+indexing time: 2.53009
+query time: 7.1052
+total time usage: 9.63528
+answer size: 3113973 time usage: 12.6302 filter time: 3.12768
