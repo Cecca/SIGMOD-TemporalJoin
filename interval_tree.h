@@ -1,6 +1,7 @@
 #ifndef __INTERVAL_TREE_H
 #define __INTERVAL_TREE_H
 
+#include <limits>
 #include "utility.h"
 #include <vector>
 #include <algorithm>

@@ -36,20 +36,29 @@ struct join_result {
     // time interval
     int t_start;
     int t_end;
+
+    void csv(std::ostream & out) {
+        for (auto& v : attrs) {
+            out << v << ", ";
+        }
+        out << t_start << ", " << t_end;
+        out << std::endl;
+    }
+
     void print() {
-        std::cout << table_id << ' ';
-        std::cout << '[';
-        for (auto& v : id)
-            std::cout << v << ':';
-        std::cout << "] ";
-        std::cout << idx << " ";
+        // std::cout << table_id << ' ';
+        // std::cout << '[';
+        // for (auto& v : id)
+        //     std::cout << v << ':';
+        // std::cout << "] ";
+        // std::cout << idx << " ";
         std::cout << "[ ";
         for (auto& v : attrs)
             std::cout << v << ' ';
         std::cout << "] ";
         std::cout << '[' << t_start << ',' << t_end << "] ";
-        for (auto v : attr_id)
-            std::cout << v << ' ';
+        // for (auto v : attr_id)
+        //     std::cout << v << ' ';
         std::cout << std::endl;
     }
 
