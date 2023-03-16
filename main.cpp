@@ -12,7 +12,7 @@ using namespace std;
 void dateTimeConverterTest() {
     string date_time = "2019-11-05 00:11:24";
     time_t tm = getEpochTime(date_time);
-    cout << tm << endl;
+    cerr << tm << endl;
 }
 
 void dataLoaderTest() {
@@ -73,12 +73,12 @@ void taxiStarJoinFullTest() {
         join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], tau);
         join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], tau);
 
-        cout << "================" << tau << "================" << endl;
+        cerr << "================" << tau << "================" << endl;
         ts = clock();
         vector<join_result> answer = durable_join.hierarchy_durable_join("/home/home1/jygao/workspace/DurableJoin/join_tree_star_join.dat", 
                         join_tables, join_order, join_attrs, 30, tau);
         te = clock();
-        cout << "answer size: " << answer.size() << endl;
+        cerr << "answer size: " << answer.size() << endl;
         for (int i=0 ; i < answer.size(); ++i) {
             if (i > 10)
                 break;
@@ -89,7 +89,7 @@ void taxiStarJoinFullTest() {
         vector<join_result> baseline = 
             durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, tau);
         te = clock();
-        cout << "ground truth size: " << baseline.size() << ' '
+        cerr << "ground truth size: " << baseline.size() << ' '
                 << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
         for (int i=0; i < baseline.size(); ++i) {
             if (i > 10)
@@ -131,12 +131,12 @@ void taxiStarJoinTest() {
         join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], 0);
         join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], 0);
         join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], 0);
-        cout << "================" << tau << "================" << endl;
+        cerr << "================" << tau << "================" << endl;
         ts = clock();
         vector<join_result> answer = durable_join.hierarchy_durable_join("/home/home1/jygao/workspace/DurableJoin/join_tree_star_join_v2.dat", 
                         join_tables, join_order, join_attrs, 30, tau);
         te = clock();
-        cout << "answer size: " << answer.size() << endl;
+        cerr << "answer size: " << answer.size() << endl;
         for (int i=0 ; i < answer.size(); ++i) {
             if (i > 10)
                 break;
@@ -147,7 +147,7 @@ void taxiStarJoinTest() {
         vector<join_result> baseline = 
             durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, tau);
         te = clock();
-        cout << "ground truth size: " << baseline.size() << ' '
+        cerr << "ground truth size: " << baseline.size() << ' '
                 << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
         for (int i=0; i < baseline.size(); ++i) {
             if (i > 10)
@@ -177,11 +177,11 @@ void IntervalTreeTest(int durability) {
     // intervalVector result2 = iTree.findOverlapping_with_durability(20, 70, 15);
     int count = iTree.countOverlapping(50 + durability/2, 70 - durability/2);
 
-    std::cout << "regular overlapping" << std::endl;
+    std::cerr << "regular overlapping" << std::endl;
     for (auto item : result1)
         item.print();
-    std::cout << count << std::endl;
-    // std::cout << "durability overlapping" << std::endl;
+    std::cerr << count << std::endl;
+    // std::cerr << "durability overlapping" << std::endl;
     // for (auto item : result2)
     //     item.print();
 }
@@ -219,7 +219,7 @@ void JoinBaselineTest_v2(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability);
     te = clock();
 
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     // for (auto item : answer)
     //     item.print();
@@ -229,7 +229,7 @@ void JoinBaselineTest_v2(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, 1);
     te = clock();
 
-    cout << "ground truth size: " << ground_truth.size() << ' '
+    cerr << "ground truth size: " << ground_truth.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     ts = clock();
@@ -237,7 +237,7 @@ void JoinBaselineTest_v2(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, -1);
     te = clock();
 
-    cout << "ground truth size: " << fs_temporal_join.size() << ' '
+    cerr << "ground truth size: " << fs_temporal_join.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
 }
@@ -288,7 +288,7 @@ void JoinBaselineTest(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability);
     te = clock();
 
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     ts = clock();
@@ -296,7 +296,7 @@ void JoinBaselineTest(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, 1);
     te = clock();
 
-    cout << "answer size: " << temporal_join_answer.size() << ' '
+    cerr << "answer size: " << temporal_join_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
 
@@ -305,7 +305,7 @@ void JoinBaselineTest(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, -1);
     te = clock();
 
-    cout << "answer size: " << fs_temporal_join_answer.size() << ' '
+    cerr << "answer size: " << fs_temporal_join_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     // for (auto item : answer)
@@ -316,7 +316,7 @@ void JoinBaselineTest(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, 1);
     // te = clock();
 
-    // cout << "ground truth size: " << ground_truth.size() << ' '
+    // cerr << "ground truth size: " << ground_truth.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     // for (auto item : ground_truth)
     //     item.print();
@@ -367,7 +367,7 @@ void cyclicJoinTest(int durability) {
     // vector<join_result> baseline = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -410,7 +410,7 @@ void cyclicJoinTest(int durability) {
                         hybrid_tables, hybrid_join_order, hybrid_join_attrs, root_id, -1);
     te = clock();
     total += te - ts;
-    cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
             << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 
 }
@@ -450,14 +450,14 @@ void starJoinTest(int durability) {
     // vector<join_result> baseline = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
     ts = clock();
     vector<join_result> better_answer = durable_join.n_star_durable_join(join_tables, join_order, join_attrs);
     te = clock();
-    cout << "answer size: " << better_answer.size() << ' '
+    cerr << "answer size: " << better_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -494,18 +494,18 @@ void HierachicalJoinTest() {
         join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], 0);
         join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0,1}, join_attrs[3], 0);
         join_tables[4] = tl.prepare(4, total_num_attrs, vector<int>{0,1}, join_attrs[4], 0);
-        cout << "============" << tau << "============" << endl;
+        cerr << "============" << tau << "============" << endl;
         ts = clock();
         vector<join_result> answer = durable_join.hierarchy_durable_join("/home/home1/jygao/workspace/DurableJoin/join_tree_1.dat", 
                         join_tables, join_order, join_attrs, 30, tau);
         te = clock();
-        cout << "answer size: " << answer.size() << endl;
+        cerr << "answer size: " << answer.size() << endl;
         
         ts = clock();
         vector<join_result> baseline = 
             durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, tau);
         te = clock();
-        cout << "ground truth size: " << baseline.size() << ' '
+        cerr << "ground truth size: " << baseline.size() << ' '
                 << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     }
     // durable_join.difference(answer, baseline);
@@ -542,14 +542,14 @@ void Cyclic3Join(int durability) {
     ts = clock();
     vector<join_result> generic_join_answer = durable_join.durable_generic_join(join_tables, join_order, join_attrs, 0, -1);
     te = clock();
-    cout << "answer size: " << generic_join_answer.size() << ' '
+    cerr << "answer size: " << generic_join_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     // ts = clock();
     // vector<join_result> fs_temporal_join_answer = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
-    // cout << "answer size: " << fs_temporal_join_answer.size() << ' '
+    // cerr << "answer size: " << fs_temporal_join_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 }
 
@@ -588,14 +588,14 @@ void Cyclic4Join(int durability) {
     // ts = clock();
     // vector<join_result> generic_join_answer = durable_join.durable_generic_join(join_tables, join_order, join_attrs, 0, -1);
     // te = clock();
-    // cout << "answer size: " << generic_join_answer.size() << ' '
+    // cerr << "answer size: " << generic_join_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     // ts = clock();
     // vector<join_result> fs_temporal_join_answer = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
-    // cout << "answer size: " << fs_temporal_join_answer.size() << ' '
+    // cerr << "answer size: " << fs_temporal_join_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     
     clock_t total = 0;
@@ -616,7 +616,7 @@ void Cyclic4Join(int durability) {
     ts = clock();
     vector<join_result> partial_1 = durable_join.multiway_durable_join_baseline(partial_join_tables_1, partial_join_order_1, partial_join_attrs_1, -1, -1);
     te = clock();
-    cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     for (int i=0; i<partial_1.size(); ++i) {
         partial_1[i].table_id = 0;
         partial_1[i].idx = i;
@@ -625,7 +625,7 @@ void Cyclic4Join(int durability) {
     ts = clock();
     vector<join_result> partial_2 = durable_join.multiway_durable_join_baseline(partial_join_tables_2, partial_join_order_2, partial_join_attrs_2, -1, -1);
     te = clock();
-    cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     for (int i=0; i<partial_2.size(); ++i) {
         partial_2[i].table_id = 1;
         partial_2[i].idx = i;
@@ -642,7 +642,7 @@ void Cyclic4Join(int durability) {
     vector<join_result> hybrid_answer = durable_join.n_star_durable_join_v2(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     te = clock();
     total += te - ts;
-    cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
             << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 
 }
@@ -685,14 +685,14 @@ void Cyclic5Join(int durability) {
     // ts = clock();
     // vector<join_result> generic_join_answer = durable_join.durable_generic_join(join_tables, join_order, join_attrs, 0, -1);
     // te = clock();
-    // cout << "answer size: " << generic_join_answer.size() << ' '
+    // cerr << "answer size: " << generic_join_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     // ts = clock();
     // vector<join_result> fs_temporal_join_answer = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
-    // cout << "answer size: " << fs_temporal_join_answer.size() << ' '
+    // cerr << "answer size: " << fs_temporal_join_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     
     clock_t total = 0;
@@ -713,7 +713,7 @@ void Cyclic5Join(int durability) {
     ts = clock();
     vector<join_result> partial_1 = durable_join.multiway_durable_join_baseline(partial_join_tables_1, partial_join_order_1, partial_join_attrs_1, -1, -1);
     te = clock();
-    cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     for (int i=0; i<partial_1.size(); ++i) {
         partial_1[i].table_id = 0;
         partial_1[i].idx = i;
@@ -722,7 +722,7 @@ void Cyclic5Join(int durability) {
     ts = clock();
     vector<join_result> partial_2 = durable_join.multiway_durable_join_baseline(partial_join_tables_2, partial_join_order_2, partial_join_attrs_2, -1, -1);
     te = clock();
-    cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     for (int i=0; i<partial_2.size(); ++i) {
         partial_2[i].table_id = 1;
         partial_2[i].idx = i;
@@ -739,7 +739,7 @@ void Cyclic5Join(int durability) {
     vector<join_result> hybrid_answer = durable_join.n_star_durable_join_v2(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     te = clock();
     total += te - ts;
-    cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
             << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 }
 
@@ -776,7 +776,7 @@ void YannakakisTest(int durability) {
         durable_join.non_hierarchy_durable_join_v2("/home/home1/jygao/workspace/DurableJoin/yannakakis_join_tree.dat", 
                         join_tables, join_order, join_attrs, root_id, durability);
     te = clock();
-    cout << "answer size: " << yannakakis_answer.size() << ' '
+    cerr << "answer size: " << yannakakis_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     for (auto item : yannakakis_answer)
@@ -786,7 +786,7 @@ void YannakakisTest(int durability) {
     vector<join_result> fs_temporal_join_answer = 
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, -1);
     te = clock();
-    cout << "answer size: " << fs_temporal_join_answer.size() << ' '
+    cerr << "answer size: " << fs_temporal_join_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 }
 
@@ -820,7 +820,7 @@ void Line3CountingTest(int durability) {
     ts = clock();
     int answer = durable_join.line_3_join_counting(join_tables[0], join_tables[1], join_tables[2], join_attrs, durability);
     te = clock();
-    cout << "answer size: " << answer << ' '
+    cerr << "answer size: " << answer << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
@@ -863,7 +863,7 @@ void Line3JoinSweepPlaneTest(int durability) {
     // ts = clock();
     // vector<join_result> answer = durable_join.line_3_join(join_tables[0], join_tables[1], join_tables[2], join_attrs, durability);
     // te = clock();
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     
@@ -873,7 +873,7 @@ void Line3JoinSweepPlaneTest(int durability) {
         durable_join.non_hierarchy_durable_join_v2("/home/home1/jygao/workspace/DurableJoin/yannakakis_line_3_join_tree.dat", 
                         join_tables, join_order, join_attrs, root_id, -1);
     te = clock();
-    cout << "answer size: " << yannakakis_answer.size() << ' '
+    cerr << "answer size: " << yannakakis_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     // for (auto item : yannakakis_answer)
     //     item.print();
@@ -882,7 +882,7 @@ void Line3JoinSweepPlaneTest(int durability) {
     vector<join_result> baseline = 
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     te = clock();
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     // for (auto item : baseline)
@@ -937,7 +937,7 @@ void SynLineJoinTest(int durability) {
     
     vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, -1);
     te = clock();
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     
@@ -945,7 +945,7 @@ void SynLineJoinTest(int durability) {
     // vector<join_result> baseline = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -955,7 +955,7 @@ void SynLineJoinTest(int durability) {
     //     durable_join.non_hierarchy_durable_join_v2("/home/home1/jygao/workspace/DurableJoin/yannakakis_line_4_join_tree.dat", 
     //                     join_tables, join_order, join_attrs, root_id, -1);
     // te = clock();
-    // cout << "answer size: " << yannakakis_answer.size() << ' '
+    // cerr << "answer size: " << yannakakis_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     // clock_t total = 0;
@@ -969,7 +969,7 @@ void SynLineJoinTest(int durability) {
     // clock_t tts = clock();
     // vector<join_result> partial = durable_join.multiway_durable_join_baseline(partial_join_tables, partial_join_order, partial_join_attrs, -1, -1);
     // clock_t tte = clock();
-    // cout << (double) (tte - tts) / CLOCKS_PER_SEC << endl;
+    // cerr << (double) (tte - tts) / CLOCKS_PER_SEC << endl;
     // for (int i=0; i<partial.size(); ++i) {
     //     partial[i].table_id = 0;
     //     partial[i].idx = i;
@@ -986,7 +986,7 @@ void SynLineJoinTest(int durability) {
     // vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     // tte = clock();
     // total += tte - tts;
-    // cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    // cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
     //         << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 
 }
@@ -1030,7 +1030,7 @@ void lineKJoinTest(int durability) {
     ts = clock();
     vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, durability);
     te = clock();
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     
@@ -1041,7 +1041,7 @@ void lineKJoinTest(int durability) {
     vector<join_result> baseline = 
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, 1);
     te = clock();
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1119,7 +1119,7 @@ void dblpLineKJoinTest(int durability) {
     // for (auto record : yannakakis_answer)
     //     record.print();
     yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    cout << "answer size: " << yannakakis_answer.size() << ' '
+    cerr << "answer size: " << yannakakis_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
 
@@ -1127,7 +1127,7 @@ void dblpLineKJoinTest(int durability) {
     // vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, durability);
     // te = clock();
     // answer = durable_join.remove_invalid(answer);
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1135,7 +1135,7 @@ void dblpLineKJoinTest(int durability) {
     // ts = clock();
     // int answer_size = durable_join.line_k_join_counting(join_tables, join_attrs, durability);
     // te = clock();
-    // cout << "answer size: " << answer_size << ' '
+    // cerr << "answer size: " << answer_size << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1146,7 +1146,7 @@ void dblpLineKJoinTest(int durability) {
     // for (auto record : baseline)
     //     record.print();
     baseline = durable_join.remove_invalid(baseline);
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1177,7 +1177,7 @@ void RealLine3JoinTest(int durability) {
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{1}, join_attrs[0], durability, true);
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0}, join_attrs[2], durability, true);
-    cout << "filtered table size : " << join_tables[0].size() << endl;
+    cerr << "filtered table size : " << join_tables[0].size() << endl;
     te = clock();
     clock_t filter_time = te - ts;
 
@@ -1187,7 +1187,7 @@ void RealLine3JoinTest(int durability) {
     // vector<join_result> answer = durable_join.line_3_join(join_tables[0], join_tables[1], join_tables[2], join_attrs, -1);
     // te = clock();
     // answer = durable_join.remove_invalid(answer);
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1198,7 +1198,7 @@ void RealLine3JoinTest(int durability) {
                         join_tables, join_order, join_attrs, root_id, -1);
     te = clock();
     yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    cout << "answer size: " << yannakakis_answer.size() << ' '
+    cerr << "answer size: " << yannakakis_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     
     
@@ -1209,7 +1209,7 @@ void RealLine3JoinTest(int durability) {
     // // for (auto item : baseline)
     // //     item.print();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1225,7 +1225,7 @@ void RealLine3JoinTest(int durability) {
     //     partial[i].table_id = 0;
     //     partial[i].idx = i;
     // }
-    // cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    // cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     // total += te - ts;
     // map<int, vector<join_result>> hybrid_tables;
     // map<int, vector<int>> hybrid_join_attrs;
@@ -1238,7 +1238,7 @@ void RealLine3JoinTest(int durability) {
     // vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     // te = clock();
     // total += te - ts;
-    // cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    // cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
     //         << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 }
 
@@ -1269,7 +1269,7 @@ void RealLine4JoinTest(int durability) {
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability, true);
     join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0}, join_attrs[3], durability, true);
-    cout << "filtered table size : " << join_tables[0].size() << endl;
+    cerr << "filtered table size : " << join_tables[0].size() << endl;
     te = clock();
     clock_t filter_time = te - ts;
 
@@ -1278,7 +1278,7 @@ void RealLine4JoinTest(int durability) {
     ts = clock();
     vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, -1);
     te = clock();
-    cout << "ground truth size: " << answer.size() << ' '
+    cerr << "ground truth size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1287,7 +1287,7 @@ void RealLine4JoinTest(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1298,7 +1298,7 @@ void RealLine4JoinTest(int durability) {
     //                     join_tables, join_order, join_attrs, root_id, -1);
     // te = clock();
     // yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    // cout << "answer size: " << yannakakis_answer.size() << ' '
+    // cerr << "answer size: " << yannakakis_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     // clock_t total = 0;
@@ -1312,7 +1312,7 @@ void RealLine4JoinTest(int durability) {
     // ts = clock();
     // vector<join_result> partial = durable_join.multiway_durable_join_baseline(partial_join_tables, partial_join_order, partial_join_attrs, -1, -1);
     // te = clock();
-    // cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    // cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     // for (int i=0; i<partial.size(); ++i) {
     //     partial[i].table_id = 0;
     //     partial[i].idx = i;
@@ -1329,7 +1329,7 @@ void RealLine4JoinTest(int durability) {
     // vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     // te = clock();
     // total += te - ts;
-    // cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    // cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
     //         << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 
 }
@@ -1364,7 +1364,7 @@ void RealLine5JoinTest(int durability) {
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability, true);
     join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0,1}, join_attrs[3], durability, true);
     join_tables[4] = tl.prepare(4, total_num_attrs, vector<int>{0}, join_attrs[4], durability, true);
-    cout << "filtered table size : " << join_tables[0].size() << endl;
+    cerr << "filtered table size : " << join_tables[0].size() << endl;
     te = clock();
     clock_t filter_time = te - ts;
 
@@ -1373,7 +1373,7 @@ void RealLine5JoinTest(int durability) {
     ts = clock();
     vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, -1);
     te = clock();
-    cout << "ground truth size: " << answer.size() << ' '
+    cerr << "ground truth size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1382,7 +1382,7 @@ void RealLine5JoinTest(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     
@@ -1393,7 +1393,7 @@ void RealLine5JoinTest(int durability) {
     //                     join_tables, join_order, join_attrs, root_id, -1);
     // te = clock();
     // yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    // cout << "answer size: " << yannakakis_answer.size() << ' '
+    // cerr << "answer size: " << yannakakis_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 
     // clock_t total = 0;
@@ -1407,7 +1407,7 @@ void RealLine5JoinTest(int durability) {
     // clock_t tts = clock();
     // vector<join_result> partial = durable_join.multiway_durable_join_baseline(partial_join_tables, partial_join_order, partial_join_attrs, -1, -1);
     // clock_t tte = clock();
-    // cout << (double) (tte - tts) / CLOCKS_PER_SEC << endl;
+    // cerr << (double) (tte - tts) / CLOCKS_PER_SEC << endl;
     // for (int i=0; i<partial.size(); ++i) {
     //     partial[i].table_id = 0;
     //     partial[i].idx = i;
@@ -1424,7 +1424,7 @@ void RealLine5JoinTest(int durability) {
     // vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     // tte = clock();
     // total += tte - tts;
-    // cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    // cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
     //         << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 
 }
@@ -1453,9 +1453,9 @@ void tpcQ3Join(int durability) {
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{1}, join_attrs[0], durability, true);
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0}, join_attrs[2], durability, true);
-    cout << "filtered table size : " << endl;
+    cerr << "filtered table size : " << endl;
     for (int id : join_order)
-        cout << join_tables[id].size() << std::endl;
+        cerr << join_tables[id].size() << std::endl;
     te = clock();
     clock_t filter_time = te - ts;
 
@@ -1466,7 +1466,7 @@ void tpcQ3Join(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     te = clock();
     baseline = durable_join.remove_invalid(baseline);
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1482,7 +1482,7 @@ void tpcQ3Join(int durability) {
     //     partial[i].table_id = 0;
     //     partial[i].idx = i;
     // }
-    // cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    // cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     // total += te - ts;
     // map<int, vector<join_result>> hybrid_tables;
     // map<int, vector<int>> hybrid_join_attrs;
@@ -1495,14 +1495,14 @@ void tpcQ3Join(int durability) {
     // vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     // te = clock();
     // total += te - ts;
-    // cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    // cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
     //         << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
     
     // ts = clock();
     // vector<join_result> answer = durable_join.line_3_join(join_tables[0], join_tables[1], join_tables[2], join_attrs, -1);
     // te = clock();
     // answer = durable_join.remove_invalid(answer);
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1514,7 +1514,7 @@ void tpcQ3Join(int durability) {
     //                     join_tables, join_order, join_attrs, root_id, -1);
     // te = clock();
     // yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    // cout << "answer size: " << yannakakis_answer.size() << ' '
+    // cerr << "answer size: " << yannakakis_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
 }
 void tpcQ5Join(int durability) {
@@ -1543,9 +1543,9 @@ void tpcQ5Join(int durability) {
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability, true);
     join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0}, join_attrs[3], durability, true);
-    cout << "filtered table size : " << endl;
+    cerr << "filtered table size : " << endl;
     for (int id : join_order)
-        cout << join_tables[id].size() << std::endl;
+        cerr << join_tables[id].size() << std::endl;
     te = clock();
     clock_t filter_time = te - ts;
 
@@ -1554,7 +1554,7 @@ void tpcQ5Join(int durability) {
     ts = clock();
     std::vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, -1);
     te = clock();
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1573,7 +1573,7 @@ void tpcQ5Join(int durability) {
     //     partial[i].table_id = 0;
     //     partial[i].idx = i;
     // }
-    // cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    // cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     // total += te - ts;
     // map<int, vector<join_result>> hybrid_tables;
     // map<int, vector<int>> hybrid_join_attrs;
@@ -1586,7 +1586,7 @@ void tpcQ5Join(int durability) {
     // vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     // te = clock();
     // total += te - ts;
-    // cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    // cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
     //         << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 
 
@@ -1597,7 +1597,7 @@ void tpcQ5Join(int durability) {
     //                     join_tables, join_order, join_attrs, root_id, -1);
     // te = clock();
     // yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    // cout << "answer size: " << yannakakis_answer.size() << ' '
+    // cerr << "answer size: " << yannakakis_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     
     
@@ -1606,7 +1606,7 @@ void tpcQ5Join(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
@@ -1634,9 +1634,9 @@ void tpcQ9Join(int durability) {
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{1}, join_attrs[0], durability, true);
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0}, join_attrs[2], durability, true);
-    cout << "filtered table size : " << endl;
+    cerr << "filtered table size : " << endl;
     for (int id : join_order)
-        cout << join_tables[id].size() << std::endl;
+        cerr << join_tables[id].size() << std::endl;
     te = clock();
     clock_t filter_time = te - ts;
 
@@ -1646,7 +1646,7 @@ void tpcQ9Join(int durability) {
     // vector<join_result> answer = durable_join.line_3_join(join_tables[0], join_tables[1], join_tables[2], join_attrs, -1);
     // te = clock();
     // answer = durable_join.remove_invalid(answer);
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1658,7 +1658,7 @@ void tpcQ9Join(int durability) {
     //                     join_tables, join_order, join_attrs, root_id, -1);
     // te = clock();
     // yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    // cout << "answer size: " << yannakakis_answer.size() << ' '
+    // cerr << "answer size: " << yannakakis_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     
     clock_t total = 0;
@@ -1673,7 +1673,7 @@ void tpcQ9Join(int durability) {
         partial[i].table_id = 1;
         partial[i].idx = i;
     }
-    cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     total += te - ts;
     map<int, vector<join_result>> hybrid_tables;
     map<int, vector<int>> hybrid_join_attrs;
@@ -1686,7 +1686,7 @@ void tpcQ9Join(int durability) {
     vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     te = clock();
     total += te - ts;
-    cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
             << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
     
     // ts = clock();
@@ -1694,7 +1694,7 @@ void tpcQ9Join(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
@@ -1725,9 +1725,9 @@ void tpcQ9_4_Join(int durability) {
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability, true);
     join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0}, join_attrs[3], durability, true);
-    cout << "filtered table size : " << endl;
+    cerr << "filtered table size : " << endl;
     for (int id : join_order)
-        cout << join_tables[id].size() << std::endl;
+        cerr << join_tables[id].size() << std::endl;
     te = clock();
     clock_t filter_time = te - ts;
 
@@ -1736,7 +1736,7 @@ void tpcQ9_4_Join(int durability) {
     // ts = clock();
     // std::vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, -1);
     // te = clock();
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1755,7 +1755,7 @@ void tpcQ9_4_Join(int durability) {
         partial[i].table_id = 0;
         partial[i].idx = i;
     }
-    cout << (double) (te - ts) / CLOCKS_PER_SEC << endl;
+    cerr << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     total += te - ts;
     map<int, vector<join_result>> hybrid_tables;
     map<int, vector<int>> hybrid_join_attrs;
@@ -1768,7 +1768,7 @@ void tpcQ9_4_Join(int durability) {
     vector<join_result> hybrid_answer = durable_join.n_star_durable_join(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
     te = clock();
     total += te - ts;
-    cout << "hybrid answer size: " << hybrid_answer.size() << ' '
+    cerr << "hybrid answer size: " << hybrid_answer.size() << ' '
             << "time usage: " << (double) total / CLOCKS_PER_SEC << endl;
 
 
@@ -1779,7 +1779,7 @@ void tpcQ9_4_Join(int durability) {
     //                     join_tables, join_order, join_attrs, root_id, -1);
     // te = clock();
     // yannakakis_answer = durable_join.remove_invalid(yannakakis_answer);
-    // cout << "answer size: " << yannakakis_answer.size() << ' '
+    // cerr << "answer size: " << yannakakis_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << endl;
     
     
@@ -1788,7 +1788,7 @@ void tpcQ9_4_Join(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
@@ -1830,7 +1830,7 @@ void tpcStarJoinTest(int durability) {
                     join_tables, join_order, join_attrs, 30, durability);
     te = clock();
     answer = durable_join.remove_invalid(answer);
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     
@@ -1839,7 +1839,7 @@ void tpcStarJoinTest(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability);
     te = clock();
     baseline = durable_join.remove_invalid(baseline);
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1881,7 +1881,7 @@ void RealStar3JoinTest(int durability) {
     // //                 join_tables, join_order, join_attrs, 30, 0);
     // te = clock();
     // answer = durable_join.remove_invalid(answer);
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     // // for (auto item : answer)
@@ -1891,7 +1891,7 @@ void RealStar3JoinTest(int durability) {
     vector<join_result> better_answer = durable_join.n_star_durable_join(join_tables, join_order, join_attrs);
     te = clock();
     better_answer = durable_join.remove_invalid(better_answer);
-    cout << "answer size: " << better_answer.size() << ' '
+    cerr << "answer size: " << better_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1901,7 +1901,7 @@ void RealStar3JoinTest(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
@@ -1944,7 +1944,7 @@ void RealStar4JoinTest(int durability) {
     // //                 join_tables, join_order, join_attrs, 30, 0);
     // te = clock();
     // answer = durable_join.remove_invalid(answer);
-    // cout << "answer size: " << answer.size() << ' '
+    // cerr << "answer size: " << answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     // // for (auto item : answer)
@@ -1954,7 +1954,7 @@ void RealStar4JoinTest(int durability) {
     // vector<join_result> better_answer = durable_join.n_star_durable_join(join_tables, join_order, join_attrs);
     // te = clock();
     // better_answer = durable_join.remove_invalid(better_answer);
-    // cout << "answer size: " << better_answer.size() << ' '
+    // cerr << "answer size: " << better_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -1964,7 +1964,7 @@ void RealStar4JoinTest(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     te = clock();
     baseline = durable_join.remove_invalid(baseline);
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
@@ -2026,10 +2026,10 @@ void BowtieJoin(int durability) {
     // ts = clock();
     // std::vector<join_result> final_answer;
     // std::vector<join_result> part_1 = durable_join.durable_generic_join(join_tables_part_1, join_order_part_1, join_attrs_part_1, 0, durability);
-    // // std::cout << part_1.size() << std::endl;
+    // // std::cerr << part_1.size() << std::endl;
     // // part_1[0].print();
     // std::vector<join_result> part_2 = durable_join.durable_generic_join(join_tables_part_2, join_order_part_2, join_attrs_part_2, 0, durability);
-    // // std::cout << part_2.size() << std::endl;
+    // // std::cerr << part_2.size() << std::endl;
     // // part_2[0].print();
     // if (!part_1.empty() && !part_2.empty()) {
     //     std::vector<int> common_attrs = get_intersection(part_1[0].attr_id, part_2[0].attr_id);
@@ -2037,7 +2037,7 @@ void BowtieJoin(int durability) {
     //     final_answer = durable_join.pairwise_forward_scan_temporal_join(part_1, part_2, common_attrs, union_attrs, durability);
     // }
     // te = clock();
-    // cout << "answer size: " << final_answer.size() << ' '
+    // cerr << "answer size: " << final_answer.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -2045,7 +2045,7 @@ void BowtieJoin(int durability) {
     vector<join_result> baseline = 
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, -1);
     te = clock();
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
@@ -2107,10 +2107,10 @@ void dblpGenericJoinTest(int durability) {
     ts = clock();
     std::vector<join_result> final_answer;
     std::vector<join_result> part_1 = durable_join.durable_generic_join(join_tables_part_1, join_order_part_1, join_attrs_part_1, 0, durability);
-    // std::cout << part_1.size() << std::endl;
+    // std::cerr << part_1.size() << std::endl;
     // part_1[0].print();
     std::vector<join_result> part_2 = durable_join.durable_generic_join(join_tables_part_2, join_order_part_2, join_attrs_part_2, 0, durability);
-    // std::cout << part_2.size() << std::endl;
+    // std::cerr << part_2.size() << std::endl;
     // part_2[0].print();
     if (!part_1.empty() && !part_2.empty()) {
         std::vector<int> common_attrs = get_intersection(part_1[0].attr_id, part_2[0].attr_id);
@@ -2118,7 +2118,7 @@ void dblpGenericJoinTest(int durability) {
         final_answer = durable_join.pairwise_forward_scan_temporal_join(part_1, part_2, common_attrs, union_attrs, durability);
     }
     te = clock();
-    cout << "answer size: " << final_answer.size() << ' '
+    cerr << "answer size: " << final_answer.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -2126,7 +2126,7 @@ void dblpGenericJoinTest(int durability) {
     vector<join_result> baseline = 
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, -1);
     te = clock();
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -2167,7 +2167,7 @@ void employeeStarJoinTest(int durability) {
     auto h_te = high_resolution_clock::now();
     auto h_duration = duration_cast<milliseconds>(h_te - h_ts);
     answer = durable_join.remove_invalid(answer);
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
             << "time usage: " << h_duration.count() << endl;
     
     auto b_ts = high_resolution_clock::now();
@@ -2176,7 +2176,7 @@ void employeeStarJoinTest(int durability) {
     auto b_te = high_resolution_clock::now();
     auto b_duration = duration_cast<milliseconds>(b_te - b_ts);
     baseline = durable_join.remove_invalid(baseline);
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
             << "time usage: " << b_duration.count() << endl;
 
     // durable_join.difference(answer, baseline);
@@ -2224,7 +2224,7 @@ void tpcKStarJoinTest(int durability) {
                     join_tables, join_order, join_attrs, 30, durability);
     te = clock();
     answer = durable_join.remove_invalid(answer);
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     // for (auto item : answer)
@@ -2235,7 +2235,7 @@ void tpcKStarJoinTest(int durability) {
         durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability);
     te = clock();
     baseline = durable_join.remove_invalid(baseline);
-    cout << "ground truth size: " << baseline.size() << ' '
+    cerr << "ground truth size: " << baseline.size() << ' '
            << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -2244,7 +2244,7 @@ void tpcKStarJoinTest(int durability) {
     // vector<join_result> naive_baseline = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability);
     // te = clock();
-    // cout << "ground truth size: " << naive_baseline.size() << ' '
+    // cerr << "ground truth size: " << naive_baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts + filter_time) / CLOCKS_PER_SEC << endl;
 }
 
@@ -2288,7 +2288,7 @@ void RealStar5JoinTest(int durability) {
     vector<join_result> answer = durable_join.n_star_durable_join(join_tables, join_order, join_attrs);
     te = clock();
     answer = durable_join.remove_invalid(answer);
-    cout << "answer size: " << answer.size() << ' '
+    cerr << "answer size: " << answer.size() << ' '
         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
             << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
     
@@ -2297,7 +2297,7 @@ void RealStar5JoinTest(int durability) {
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, -1, -1);
     // te = clock();
     // baseline = durable_join.remove_invalid(baseline);
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //        << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 
@@ -2306,7 +2306,7 @@ void RealStar5JoinTest(int durability) {
 int main(int argc, char* argv[]) {
     int durability = stoi(argv[1]);
     string exp_type(argv[2]);
-    cout << "durability: " << durability << " exp type: " << exp_type << endl;
+    cerr << "durability: " << durability << " exp type: " << exp_type << endl;
     // dataLoaderTest();
     // synLoaderTest();
     // JoinBaselineTest(durability);

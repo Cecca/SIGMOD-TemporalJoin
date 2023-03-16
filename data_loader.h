@@ -71,14 +71,14 @@ private:
 
 void TableLoader::data_viewer(const int id, const int limit) {
     for (int i=0; i<limit; ++i) {
-        // std::cout << data_table_index[id][i].pickup_id << ' ' << data_table_index[id][i].dropoff_id << std::endl;
+        // std::cerr << data_table_index[id][i].pickup_id << ' ' << data_table_index[id][i].dropoff_id << std::endl;
         data_table_index[id][i].print();
     }
 }
 
 void TableLoader::data_viewer_test(const int id, const int limit) {
     for (int i=0; i<limit; ++i) {
-        // std::cout << test_tables_index[id][i].t_start << ' ' << test_tables_index[id][i].t_end << std::endl;
+        // std::cerr << test_tables_index[id][i].t_start << ' ' << test_tables_index[id][i].t_end << std::endl;
         test_tables_index[id][i].print();
     }
 }
@@ -162,21 +162,21 @@ void TableLoader::sort_by_attr(const int id, const std::vector<int>& sort_attrs)
                         return r1.t_start < r2.t_start;
                 }
             );
-    std::cout << "--> data sorted." << std::endl;
+    std::cerr << "--> data sorted." << std::endl;
 }
 
 void TableLoader::load_test_table(const int id) {
-    std::cout << "copying data from origin table..." << std::endl;
+    std::cerr << "copying data from origin table..." << std::endl;
     test_tables_index[id] = test_tables_index[0];
-    std::cout << "total records: " << test_tables_index[id].size() << std::endl;
+    std::cerr << "total records: " << test_tables_index[id].size() << std::endl;
 }
 
 void TableLoader::load_test_table(const int id, const std::string filename, int num_of_attrs) {
     std::ifstream fin(filename);
 	if (!fin)
-		std::cout << "FILE ERROR" << std::endl;
+		std::cerr << "FILE ERROR" << std::endl;
     
-    std::cout << "load tables from " << filename << std::endl;
+    std::cerr << "load tables from " << filename << std::endl;
 
 	std::string line;
 	int cnt = 0;
@@ -203,12 +203,12 @@ void TableLoader::load_test_table(const int id, const std::string filename, int 
         // if (cnt > 100000)
         //     break;
 		// if (cnt % 1000 == 0) {
-		// 	std::cout << '\r' << cnt << std::flush;
+		// 	std::cerr << '\r' << cnt << std::flush;
         // }
         cnt++;
 	}
 	fin.close();
-	std::cout << "total records: " << test_tables_index[id].size() << "/" << cnt << std::endl;
+	std::cerr << "total records: " << test_tables_index[id].size() << "/" << cnt << std::endl;
 }
 
 void TableLoader::sort_by_attr(const int id, const std::map<int, std::string>& sorted_attrs) {
@@ -219,7 +219,7 @@ void TableLoader::sort_by_attr(const int id, const std::map<int, std::string>& s
     // iteratively sorted by user-specified attr
     for (auto const& item : sorted_attrs) {
         
-        std::cout << "sort table by " << item.second << "; ";
+        std::cerr << "sort table by " << item.second << "; ";
         if (item.second == "pickup_id") {
             std::stable_sort(data_table_index[id].begin(), data_table_index[id].end(), 
                     [](taxi_table_basic const& r1, taxi_table_basic const& r2) -> bool {
@@ -233,18 +233,18 @@ void TableLoader::sort_by_attr(const int id, const std::map<int, std::string>& s
             });
         }
         else {
-            std::cout << "should not be here" << std::endl;
+            std::cerr << "should not be here" << std::endl;
         }
     }
-    std::cout << "--> data sorted." << std::endl;
+    std::cerr << "--> data sorted." << std::endl;
 }
 
 void TableLoader::load_taxi_table(const int id, const std::string filename, const std::map<int, std::string>& attrs, bool skip_header) {
     std::ifstream fin(filename);
 	if (!fin)
-		std::cout << "FILE ERROR" << std::endl;
+		std::cerr << "FILE ERROR" << std::endl;
     
-    std::cout << "load tables from " << filename << std::endl;
+    std::cerr << "load tables from " << filename << std::endl;
 
     for (auto const& item : attrs) 
         table_attrs[id].push_back(item.second);
@@ -267,47 +267,47 @@ void TableLoader::load_taxi_table(const int id, const std::string filename, cons
                 break;
             }
             if (item.second == "id") {
-                //std::cout << row[item.first] << std::endl;
+                //std::cerr << row[item.first] << std::endl;
                 // record.id = std::stoi(row[item.first]);
                 record.set_id(std::stoi(row[item.first]));
             } else if (item.second == "pickup_id") {
-                //std::cout << row[item.first] << std::endl;
+                //std::cerr << row[item.first] << std::endl;
                 // record.pickup_id = std::stoi(row[item.first]);
                 record.set_pickup_id(std::stoi(row[item.first]));
             } else if (item.second == "dropoff_id") {
-                //std::cout << row[item.first] << std::endl;
+                //std::cerr << row[item.first] << std::endl;
                 // record.dropoff_id = std::stoi(row[item.first]);
                 record.set_dropoff_id(std::stoi(row[item.first]));
             } else if (item.second == "t_start") {
-                //std::cout << int(getEpochTime(row[item.first])) << std::endl;
+                //std::cerr << int(getEpochTime(row[item.first])) << std::endl;
                 // record.t_start = int(getEpochTime(row[item.first]));
                 record.set_t_start(int(getEpochTime(row[item.first])));
             } else if (item.second == "t_end") {
-                //std::cout << int(getEpochTime(row[item.first])) << std::endl;
+                //std::cerr << int(getEpochTime(row[item.first])) << std::endl;
                 // record.t_end = int(getEpochTime(row[item.first]));
                 record.set_t_end(int(getEpochTime(row[item.first])));
             } else {
-                std::cout << "Never should be here!" << std::endl;
+                std::cerr << "Never should be here!" << std::endl;
             }
         }
         if (exception_flag)
             break;
         data_tables[id].push_back(record);
 		// if (cnt % 1000 == 0) {
-		// 	std::cout << '\r' << cnt << std::flush;
+		// 	std::cerr << '\r' << cnt << std::flush;
         // }
         cnt++;
 	}
 	fin.close();
-	std::cout << "total records: " << data_tables[id].size() << "/" << cnt << std::endl;
+	std::cerr << "total records: " << data_tables[id].size() << "/" << cnt << std::endl;
 }
 
 void TableLoader::load_taxi_table_v2(const int id, const std::string filename, const std::map<int, std::string>& attrs, bool skip_header) {
     std::ifstream fin(filename);
 	if (!fin)
-		std::cout << "FILE ERROR" << std::endl;
+		std::cerr << "FILE ERROR" << std::endl;
     
-    std::cout << "load tables from " << filename << std::endl;
+    std::cerr << "load tables from " << filename << std::endl;
 
 	std::string line;
 	int cnt = 0;
@@ -337,7 +337,7 @@ void TableLoader::load_taxi_table_v2(const int id, const std::string filename, c
             } else if (item.second == "t_end") {
                 record.t_end = int(getEpochTime(row[item.first]));
             } else {
-                std::cout << "Never should be here!" << std::endl;
+                std::cerr << "Never should be here!" << std::endl;
             }
         }
         record.table_id = id;
@@ -345,12 +345,12 @@ void TableLoader::load_taxi_table_v2(const int id, const std::string filename, c
             break;
         test_tables_index[id].push_back(record);
 		// if (cnt % 1000 == 0) {
-		// 	std::cout << '\r' << cnt << std::flush;
+		// 	std::cerr << '\r' << cnt << std::flush;
         // }
         cnt++;
 	}
 	fin.close();
-	std::cout << "total records: " << test_tables_index[id].size() << "/" << cnt << std::endl;
+	std::cerr << "total records: " << test_tables_index[id].size() << "/" << cnt << std::endl;
 }
 
 #endif

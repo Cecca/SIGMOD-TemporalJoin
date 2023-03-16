@@ -136,10 +136,10 @@ void bowtie(std::string path, int durability, bool csv) {
     }
     std::vector<join_result> final_answer;
     std::vector<join_result> part_1 = durable_join.durable_generic_join(join_tables_part_1, join_order_part_1, join_attrs_part_1, 0, durability);
-    std::cout << part_1.size() << std::endl;
+    std::cerr << part_1.size() << std::endl;
     // part_1[0].print();
     std::vector<join_result> part_2 = durable_join.durable_generic_join(join_tables_part_2, join_order_part_2, join_attrs_part_2, 0, durability);
-    std::cout << part_2.size() << std::endl;
+    std::cerr << part_2.size() << std::endl;
     // part_2[0].print();
     if (!part_1.empty() && !part_2.empty()) {
         std::vector<int> common_attrs = get_intersection(part_1[0].attr_id, part_2[0].attr_id);
@@ -190,7 +190,7 @@ void bowtie(std::string path, int durability, bool csv) {
     // vector<join_result> baseline = 
     //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, -1);
     // te = clock();
-    // cout << "ground truth size: " << baseline.size() << ' '
+    // cerr << "ground truth size: " << baseline.size() << ' '
     //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
     //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }

@@ -20,8 +20,8 @@ std::time_t getEpochTime(const std::string& dateTime) {
 
 void print_vector(std::vector<int> const& value) {
     for (auto v : value)
-        std::cout << v << ',';
-    std::cout << std::endl;
+        std::cerr << v << ',';
+    std::cerr << std::endl;
 }
 
 std::vector<int> get_union(std::vector<int>& v1, std::vector<int>& v2) {
@@ -101,5 +101,5 @@ bool tuple_equal (std::tuple<int,int,int> const& a, std::tuple<int,int,int> cons
 }
 
 void print_tuple (std::tuple<int,int,int> const& t) {
-    std::cout << std::get<0>(t) << ' ' << std::get<1>(t) << ' ' << std::get<2>(t) << std::endl;
+    std::cerr << std::get<0>(t) << ' ' << std::get<1>(t) << ' ' << std::get<2>(t) << std::endl;
 }

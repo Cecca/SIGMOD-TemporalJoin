@@ -20,7 +20,7 @@ void Solution::difference(std::vector<join_result>& a, std::vector<join_result>&
         b_set.insert(record.id);
     }
     
-    std::cout << "size difference: " << a_set.size() << '/' << b_set.size() << std::endl;
+    std::cerr << "size difference: " << a_set.size() << '/' << b_set.size() << std::endl;
 
     // assert (a_set.size() <= b_set.size());
 
@@ -45,7 +45,7 @@ std::vector<join_result> Solution::deduplicate(std::vector<join_result>& answer)
 std::vector<join_result> Solution::remove_invalid(std::vector<join_result>& answer) {
     std::set<std::vector<int>> unique_path;
     std::vector<join_result> final_answer;
-    std::cout << "previous answer size: " << answer.size() << std::endl;
+    std::cerr << "previous answer size: " << answer.size() << std::endl;
     for (const auto& record : answer) {
         std::set<int> path(record.id.begin(), record.id.end());
         if (path.size() == record.id.size())
@@ -112,9 +112,9 @@ std::map<int, JoinTreeNode*> Solution::create_join_tree(const std::string filena
     std::map<int, JoinTreeNode*> tree;
     std::ifstream fin(filename);
 	if (!fin)
-		std::cout << "FILE ERROR" << std::endl;
+		std::cerr << "FILE ERROR" << std::endl;
     
-    std::cout << "load join tree structure from " << filename << std::endl;
+    std::cerr << "load join tree structure from " << filename << std::endl;
 
     std::string line;
 
@@ -143,9 +143,9 @@ std::map<int, YannakakisJoinTreeNode*> Solution::create_yannakakis_join_tree(con
     std::map<int, YannakakisJoinTreeNode*> tree;
     std::ifstream fin(filename);
 	if (!fin)
-		std::cout << "FILE ERROR" << std::endl;
+		std::cerr << "FILE ERROR" << std::endl;
     
-    std::cout << "load join tree structure from " << filename << std::endl;
+    std::cerr << "load join tree structure from " << filename << std::endl;
 
     std::string line;
 
@@ -188,11 +188,11 @@ void Solution::delete_tree(std::map<int, YannakakisJoinTreeNode*>& tree, int roo
 
 void Solution::tree_viewer(std::map<int, JoinTreeNode*>& tree, int root_id) {
     
-    // std::cout << root_id << " (" <<  tree[root_id]->attrs_num << ')' << std::endl;
-    std::cout << root_id << " (" ;
+    // std::cerr << root_id << " (" <<  tree[root_id]->attrs_num << ')' << std::endl;
+    std::cerr << root_id << " (" ;
     for (auto v : tree[root_id]->join_attrs)
-        std::cout << v << ',';
-    std::cout << ')' << std::endl;
+        std::cerr << v << ',';
+    std::cerr << ')' << std::endl;
     if (tree[root_id]->children.empty())
         return;
     for (int i=0; i<tree[root_id]->children.size(); ++i)
@@ -201,10 +201,10 @@ void Solution::tree_viewer(std::map<int, JoinTreeNode*>& tree, int root_id) {
 
 void Solution::tree_viewer(std::map<int, YannakakisJoinTreeNode*>& tree, int root_id) {
     
-    std::cout << root_id << " (" ;
+    std::cerr << root_id << " (" ;
     for (auto v : tree[root_id]->join_attrs)
-        std::cout << v << ',';
-    std::cout << ')' << std::endl;
+        std::cerr << v << ',';
+    std::cerr << ')' << std::endl;
     if (tree[root_id]->children.empty())
         return;
     for (int i=0; i<tree[root_id]->children.size(); ++i)
@@ -214,14 +214,14 @@ void Solution::tree_viewer(std::map<int, YannakakisJoinTreeNode*>& tree, int roo
 void Solution::print_tree(std::map<int, YannakakisJoinTreeNode*>& tree) {
     for (auto& item : tree) {
         YannakakisJoinTreeNode* node = item.second;
-        std::cout << "table " << node->node_id << " : " << std::endl;
+        std::cerr << "table " << node->node_id << " : " << std::endl;
         // for (auto& item : node->origin_table) {
         //     for (int idx : item.second)
-        //         std::cout << idx << " ";
+        //         std::cerr << idx << " ";
         // }
-        // std::cout << std::endl;
+        // std::cerr << std::endl;
         for (auto& item : node->non_dangling_join_values) {
-            std::cout << "join key: ";
+            std::cerr << "join key: ";
             print_vector(item);
         }
     }
@@ -283,7 +283,7 @@ void Solution::add_active_record(std::map<int, YannakakisJoinTreeNode*>& tree, j
     }
     // join attrs project up
     if (tree[node_id]->parent != nullptr) {
-        // std::cout << "node id: " << node_id << " parent id: " << tree[node_id]->parent->node_id << std::endl;
+        // std::cerr << "node id: " << node_id << " parent id: " << tree[node_id]->parent->node_id << std::endl;
         std::vector<int> common_attrs = get_intersection(tree[node_id]->join_attrs, tree[node_id]->parent->join_attrs);
         std::vector<int> new_key = std::vector<int>(this->total_num_attrs, UNDEF);
         for (int idx : common_attrs)
@@ -318,20 +318,20 @@ void Solution::get_total_active_records(std::map<int, YannakakisJoinTreeNode*>& 
             total_records += entry.second.size();
         }
     }
-    std::cout << "# of keys: " << total_keys << std::endl;
-    std::cout << "# of active records: " << total_records << std::endl;
+    std::cerr << "# of keys: " << total_keys << std::endl;
+    std::cerr << "# of active records: " << total_records << std::endl;
 }
 
 void Solution::print_tree(std::map<int, JoinTreeNode*>& tree, int root_id) {
-    std::cout << root_id << " (" ;
+    std::cerr << root_id << " (" ;
     for (auto v : tree[root_id]->join_attrs)
-        std::cout << v << ',';
-    std::cout << ')'; 
+        std::cerr << v << ',';
+    std::cerr << ')'; 
     for (const auto& item : tree[root_id]->max_t) {
         print_vector(item.first);
-        std::cout << "->" << std::get<0>(item.second) << std::endl;
+        std::cerr << "->" << std::get<0>(item.second) << std::endl;
     }
-    std::cout << std::endl;
+    std::cerr << std::endl;
     if (tree[root_id]->children.empty())
         return;
     for (int i=0; i<tree[root_id]->children.size(); ++i)
@@ -430,10 +430,10 @@ int Solution::intersection(join_result& a, join_result& b) {
 
 void Solution::FS_join_output(std::vector<join_result>& left, std::vector<join_result>& right, std::vector<int>& union_attrs,
                         std::vector<join_result>& answer,int durability) {
-    // std::cout << "LFET:" << std::endl;
+    // std::cerr << "LFET:" << std::endl;
     // for (auto& item : left) 
     //     item.print();
-    // std::cout << "RIGHT:" << std::endl;
+    // std::cerr << "RIGHT:" << std::endl;
     // for (auto& item : right) 
     //     item.print();
     int left_ptr = 0, right_ptr = 0;
@@ -464,7 +464,7 @@ void Solution::FS_join_output(std::vector<join_result>& left, std::vector<join_r
                         record.t_start = MAX(left[left_ptr].t_start, right[i].t_start);
                         record.t_end = MIN(left[left_ptr].t_end, right[i].t_end);
                         answer.push_back(record);
-                        // std::cout << "ANSWER:" << std::endl;
+                        // std::cerr << "ANSWER:" << std::endl;
                         // record.print();
                     }
                 }
@@ -494,7 +494,7 @@ void Solution::FS_join_output(std::vector<join_result>& left, std::vector<join_r
                         record.t_start = MAX(left[i].t_start, right[right_ptr].t_start);
                         record.t_end = MIN(left[i].t_end, right[right_ptr].t_end);
                         answer.push_back(record);
-                        // std::cout << "ANSWER:" << std::endl;
+                        // std::cerr << "ANSWER:" << std::endl;
                         // record.print();
                     }
                 }
@@ -548,7 +548,7 @@ std::vector<join_result> Solution::naive_durable_join(std::vector<join_result>& 
                     item.t_end = MIN(left_table[i].t_end, right_table[j].t_end);
                     item.attr_id = union_attrs;
                     answer.push_back(item);
-                    //std::cout << i << '/' << left_table.size() << ' ' << j << '/' << right_table.size() << std::endl;
+                    //std::cerr << i << '/' << left_table.size() << ' ' << j << '/' << right_table.size() << std::endl;
             }
             // left_table[i].print();
             // right_table[j+1].print();
@@ -673,7 +673,7 @@ std::vector<join_result> Solution::pairwise_durable_temporal_join(std::vector<jo
                 int right_idx = left_table_intervals[left_key].size() <= right_table_intervals[right_key].size() ? item.id[1] : item.id[0];
                 item.attrs = std::vector<int>(this->total_num_attrs, UNDEF);
                 for (int idx : union_attrs) {
-                    //std::cout << left_table[item.id[0]].attrs.size() << ' ' << right_table[item.id[1]].attrs.size() << std::endl;
+                    //std::cerr << left_table[item.id[0]].attrs.size() << ' ' << right_table[item.id[1]].attrs.size() << std::endl;
                     item.attrs[idx] = MAX(item.attrs[idx], left_table[left_idx].attrs[idx]);
                     item.attrs[idx] = MAX(item.attrs[idx], right_table[right_idx].attrs[idx]);
                 }
@@ -688,7 +688,7 @@ std::vector<join_result> Solution::pairwise_durable_temporal_join(std::vector<jo
                 // print_vector(union_attrs);
                 answer.emplace_back(item);
             }
-            //std::cout << answer.size() << std::endl;
+            //std::cerr << answer.size() << std::endl;
             right_it++;
             left_it++;
         }
@@ -784,17 +784,17 @@ std::vector<join_result> Solution::multiway_durable_join_baseline(std::map<int, 
     common_attrs = get_intersection(join_attrs[join_order[0]], join_attrs[join_order[1]]);
     union_attrs = get_union(join_attrs[join_order[0]], join_attrs[join_order[1]]);
     if (verbose) {
-        std::cout << "===round 1===" << std::endl;
-        std::cout << "join attrs:";
+        std::cerr << "===round 1===" << std::endl;
+        std::cerr << "join attrs:";
         print_vector(common_attrs);
-        std::cout << "union attrs:";
+        std::cerr << "union attrs:";
         print_vector(union_attrs);
     }
     // initial pair join
     std::vector<join_result> partial_ans;
     if (flag == 0) {
         if (verbose)
-            std::cout << "*************using sort-merge join*************" << std::endl;
+            std::cerr << "*************using sort-merge join*************" << std::endl;
         // sort two tables by common join attrs
         sort_by_join_attrs(join_tables[join_order[0]], common_attrs);
         sort_by_join_attrs(join_tables[join_order[1]], common_attrs);
@@ -803,12 +803,12 @@ std::vector<join_result> Solution::multiway_durable_join_baseline(std::map<int, 
     }
     else if (flag == 1) {
         if (verbose)
-            std::cout << "*************using temporal join*************" << std::endl;
+            std::cerr << "*************using temporal join*************" << std::endl;
         partial_ans = pairwise_durable_temporal_join(join_tables[join_order[0]], join_tables[join_order[1]], common_attrs, union_attrs, durability);
     }
     else if (flag == -1) {
         if (verbose)
-            std::cout << "*************using Forward Scan join*************" << std::endl;
+            std::cerr << "*************using Forward Scan join*************" << std::endl;
         // sort two tables by common join attrs
         sort_by_join_attrs(join_tables[join_order[0]], common_attrs);
         sort_by_join_attrs(join_tables[join_order[1]], common_attrs);
@@ -816,12 +816,12 @@ std::vector<join_result> Solution::multiway_durable_join_baseline(std::map<int, 
     }
     else {
         if (verbose)
-            std::cout << "*************using loop-based join*************" << std::endl;
+            std::cerr << "*************using loop-based join*************" << std::endl;
         partial_ans = naive_durable_join(join_tables[join_order[0]], join_tables[join_order[1]], common_attrs, union_attrs, durability);
         // partial_ans = naive_durable_join(join_tables[join_order[0]], join_tables[join_order[1]], common_attrs, union_attrs, 0);
     }
     if (verbose)
-        std::cout << "intermediate result size: " << partial_ans.size() << std::endl;
+        std::cerr << "intermediate result size: " << partial_ans.size() << std::endl;
     // pairwise join for rest tables one-by-one
     // (need projection on Intermediate join results if necessary)
     for (int i=2; i<join_order.size(); ++i) {
@@ -832,10 +832,10 @@ std::vector<join_result> Solution::multiway_durable_join_baseline(std::map<int, 
         common_attrs = get_intersection(partial_ans[0].attr_id, join_attrs[join_order[i]]);
         union_attrs = get_union(partial_ans[0].attr_id, join_attrs[join_order[i]]);
         if (verbose) {
-            std::cout << "===round " << i << "===" << std::endl;
-            std::cout << "join attrs:";
+            std::cerr << "===round " << i << "===" << std::endl;
+            std::cerr << "join attrs:";
             print_vector(common_attrs);
-            std::cout << "union attrs:";
+            std::cerr << "union attrs:";
             print_vector(union_attrs);
         }
         
@@ -857,7 +857,7 @@ std::vector<join_result> Solution::multiway_durable_join_baseline(std::map<int, 
             partial_ans = naive_durable_join(partial_ans, join_tables[join_order[i]], common_attrs, union_attrs, durability);
         }
         if (verbose)
-            std::cout << "intermediate result size: " << partial_ans.size() << std::endl;
+            std::cerr << "intermediate result size: " << partial_ans.size() << std::endl;
     }
 
     std::vector<join_result> ans;
@@ -867,11 +867,11 @@ std::vector<join_result> Solution::multiway_durable_join_baseline(std::map<int, 
             ans.push_back(item);
     }
     if (verbose)
-        std::cout << "intermediate result size: " << ans.size() << std::endl;
+        std::cerr << "intermediate result size: " << ans.size() << std::endl;
     // return results
     clock_t te = clock();
     if (verbose)
-        std::cout << "overall time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
+        std::cerr << "overall time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
     return ans;
 }
 
@@ -911,9 +911,9 @@ void Solution::enumerate(JoinTreeNode* root, join_result& record, std::map<int, 
             candidates[table_id].push_back(record.idx);
         }
         else {
-            // std::cout << root->node_id << ':';
+            // std::cerr << root->node_id << ':';
             // print_vector(record.attrs);
-            // std::cout << root->node_id << ':' << root->base_table.size() << std::endl;
+            // std::cerr << root->node_id << ':' << root->base_table.size() << std::endl;
             for (int rid : root->base_table[key]) {
                 if (is_equal_joined(join_tables[table_id][rid], record, common_attrs) 
                         && is_durable(join_tables[table_id][rid], record, durability)) {
@@ -1127,7 +1127,7 @@ void Solution::update(std::map<int, JoinTreeNode*>& tree, join_result& record) {
 //             timestamps.insert(record.t_end);
 //         }
 //     }
-//     std::cout << "total record: " << data.size() << "/" << data_by_right.size() << std::endl;
+//     std::cerr << "total record: " << data.size() << "/" << data_by_right.size() << std::endl;
 
 //     clock_t sort_ts = clock();
 //     std::sort(data.begin(), data.end(), 
@@ -1141,7 +1141,7 @@ void Solution::update(std::map<int, JoinTreeNode*>& tree, join_result& record) {
 //                 return a.t_end < b.t_end;
 //             });
 //     clock_t sort_te = clock();
-//     std::cout << "sorting time: " << (double) (sort_te - sort_ts) / CLOCKS_PER_SEC << std::endl;
+//     std::cerr << "sorting time: " << (double) (sort_te - sort_ts) / CLOCKS_PER_SEC << std::endl;
 
 //     clock_t report_ts, report_te, report_total=0;
 //     clock_t add_ts, add_te, add_total=0;
@@ -1154,7 +1154,7 @@ void Solution::update(std::map<int, JoinTreeNode*>& tree, join_result& record) {
 //         // The start of valid interval from a record
 //         // add this record into the active set
 //         while (left_idx < data.size() && t == data[left_idx].t_start) {
-//             // std::cout << right_idx << "--/--" << left_idx << std::endl;
+//             // std::cerr << right_idx << "--/--" << left_idx << std::endl;
 //             // data[left_idx].print();
 //             add_ts = clock();
 //             // add record into active set
@@ -1162,13 +1162,13 @@ void Solution::update(std::map<int, JoinTreeNode*>& tree, join_result& record) {
 //             left_idx++;
 //             add_te = clock();
 //             add_total += add_te - add_ts;
-//             // std::cout << "end" << std::endl;
+//             // std::cerr << "end" << std::endl;
 //         }
 //         // The end of valid interval from a record
 //         // report join result and remove 
 //         while (right_idx < data_by_right.size() && t == data_by_right[right_idx].t_end) {
 //             // data_by_right[right_idx].print();
-//             // std::cout << right_idx << "/" << left_idx << std::endl;
+//             // std::cerr << right_idx << "/" << left_idx << std::endl;
 //             // get_total_active_records(tree);
 //             report_ts = clock();
 //             // // issue yannakakis algorithm on current active records
@@ -1201,7 +1201,7 @@ void Solution::update(std::map<int, JoinTreeNode*>& tree, join_result& record) {
 //             delete_te = clock();
 //             delete_total += delete_te - delete_ts;
 //             right_idx++;
-//             // std::cout << semi_join_time_total << "/" << report_time_total << std::endl;
+//             // std::cerr << semi_join_time_total << "/" << report_time_total << std::endl;
 //         }
 //         if (flag == 1) {
 //             initialize_tree(tree);
@@ -1211,13 +1211,13 @@ void Solution::update(std::map<int, JoinTreeNode*>& tree, join_result& record) {
 //     te = clock();
 //     // free tree memory
 //     delete_tree(tree, root_id);
-//     std::cout << "delete time: " << (double) delete_total / CLOCKS_PER_SEC << std::endl;
-//     // std::cout << "report time: " << report_time_total << std::endl;
-//     std::cout << "semi join time: " << semi_join_time_total << std::endl;
-//     std::cout << "overall report total: " << (double) report_total / CLOCKS_PER_SEC << std::endl;
-//     std::cout << "add time: " << (double) add_total / CLOCKS_PER_SEC << std::endl;
-//     // std::cout << "Overall time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
-//     std::cout << "Overall time usage: " << (double) (delete_total + add_total + report_total) / CLOCKS_PER_SEC << std::endl;
+//     std::cerr << "delete time: " << (double) delete_total / CLOCKS_PER_SEC << std::endl;
+//     // std::cerr << "report time: " << report_time_total << std::endl;
+//     std::cerr << "semi join time: " << semi_join_time_total << std::endl;
+//     std::cerr << "overall report total: " << (double) report_total / CLOCKS_PER_SEC << std::endl;
+//     std::cerr << "add time: " << (double) add_total / CLOCKS_PER_SEC << std::endl;
+//     // std::cerr << "Overall time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
+//     std::cerr << "Overall time usage: " << (double) (delete_total + add_total + report_total) / CLOCKS_PER_SEC << std::endl;
 //     return answer;
 // }
 
@@ -1245,7 +1245,7 @@ std::vector<join_result> Solution::non_hierarchy_durable_join_v2(const std::stri
             timestamps.insert(record.t_end);
         }
     }
-    std::cout << "total record: " << data.size() << "/" << data_by_right.size() << std::endl;
+    std::cerr << "total record: " << data.size() << "/" << data_by_right.size() << std::endl;
 
     clock_t sort_ts = clock();
     std::sort(data.begin(), data.end(), 
@@ -1259,7 +1259,7 @@ std::vector<join_result> Solution::non_hierarchy_durable_join_v2(const std::stri
                 return a.t_end < b.t_end;
             });
     clock_t sort_te = clock();
-    std::cout << "sorting time: " << (double) (sort_te - sort_ts) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "sorting time: " << (double) (sort_te - sort_ts) / CLOCKS_PER_SEC << std::endl;
 
     clock_t report_ts, report_te, report_total=0;
     clock_t add_ts, add_te, add_total=0;
@@ -1270,7 +1270,7 @@ std::vector<join_result> Solution::non_hierarchy_durable_join_v2(const std::stri
     // sweep line on time domain to prepare active records for Yannakakis algorithm
     int left_idx = 0, right_idx = 0;
     for (int t : timestamps) {
-        // std::cout << "at time: " << t << std::endl;
+        // std::cerr << "at time: " << t << std::endl;
         while (left_idx < data.size() && t == data[left_idx].t_start) {
             // add record into active set
             add_active_record(tree, data[left_idx]);
@@ -1279,9 +1279,9 @@ std::vector<join_result> Solution::non_hierarchy_durable_join_v2(const std::stri
         // The end of valid interval from a record
         // report join result and remove 
         while (right_idx < data_by_right.size() && t == data_by_right[right_idx].t_end) {
-            // std::cout << "==================" << std::endl;
+            // std::cerr << "==================" << std::endl;
             // data_by_right[right_idx].print();
-            // std::cout << '\r' << right_idx << std::flush;
+            // std::cerr << '\r' << right_idx << std::flush;
             report_ts = clock();
             std::map<int, std::set<int>> join_candidates_idx;
             std::map<int, std::vector<join_result>> join_candidates;
@@ -1300,7 +1300,7 @@ std::vector<join_result> Solution::non_hierarchy_durable_join_v2(const std::stri
             // if (print_flag) {
             //     data_by_right[right_idx].print();
             //     for (int idx : join_order) {
-            //         std::cout << "====table : " << idx  << " ====" << std::endl;
+            //         std::cerr << "====table : " << idx  << " ====" << std::endl;
             //         for (auto item : join_candidates[idx])
             //             item.print();
             //     }
@@ -1328,9 +1328,9 @@ std::vector<join_result> Solution::non_hierarchy_durable_join_v2(const std::stri
     }
     clock_t end = clock();
     delete_tree(tree, root_id);
-    // std::cout << "answer size: " << answer_cnt << std::endl;
-    std::cout << "report time: " << (double) report_total / CLOCKS_PER_SEC << std::endl;
-    std::cout << "overall time: " << (double) (end - start) / CLOCKS_PER_SEC << std::endl;
+    // std::cerr << "answer size: " << answer_cnt << std::endl;
+    std::cerr << "report time: " << (double) report_total / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "overall time: " << (double) (end - start) / CLOCKS_PER_SEC << std::endl;
     return answer;
 }
 
@@ -1378,9 +1378,9 @@ std::vector<join_result> Solution::hierarchy_durable_join(const std::string file
     int cnt = 0;
     auto ts = high_resolution_clock::now();
     for (int t : timestamps) {
-        // std::cout << "\r" << cnt << '/' << total_size << std::flush;
+        // std::cerr << "\r" << cnt << '/' << total_size << std::flush;
         cnt++;
-        //std::cout << "current timestamp:" << t << std::endl;
+        //std::cerr << "current timestamp:" << t << std::endl;
         while (t == data[left_idx].t_start) {
             // update the structure by inserting a new record
             update(tree, data[left_idx]);
@@ -1413,15 +1413,15 @@ std::vector<join_result> Solution::hierarchy_durable_join(const std::string file
     }
     auto te = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(te - ts);
-    std::cout << "Done. Release memory..." << left_idx << ' ' << right_idx << std::endl;
-    // std::cout << "enum/output/sorting/update/delete time usage: " << (double) enum_time / CLOCKS_PER_SEC << '/'
+    std::cerr << "Done. Release memory..." << left_idx << ' ' << right_idx << std::endl;
+    // std::cerr << "enum/output/sorting/update/delete time usage: " << (double) enum_time / CLOCKS_PER_SEC << '/'
     //     << (double) output_time / CLOCKS_PER_SEC << '/' << (double) sorting_time / CLOCKS_PER_SEC << '/' 
     //     << (double) update_time / CLOCKS_PER_SEC << '/' << (double) delete_time / CLOCKS_PER_SEC  << std::endl;
-    // std::cout << "count time usage: " << (double) count_time / CLOCKS_PER_SEC << std::endl;
-    // std::cout << "join size count: " << join_size << std::endl;
+    // std::cerr << "count time usage: " << (double) count_time / CLOCKS_PER_SEC << std::endl;
+    // std::cerr << "join size count: " << join_size << std::endl;
     // clean up tree memory
     delete_tree(tree, root_id);
-    std::cout << "total time usage: " << duration.count()  << std::endl;
+    std::cerr << "total time usage: " << duration.count()  << std::endl;
     return answer;
 }
 
@@ -1523,7 +1523,7 @@ std::vector<join_result> Solution::n_star_durable_join(std::map<int, std::vector
         }
     }
     clock_t te = clock();
-    std::cout << "overall time usage: " << (double) (te - ts + (sort_te - sort_ts) / 2) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "overall time usage: " << (double) (te - ts + (sort_te - sort_ts) / 2) / CLOCKS_PER_SEC << std::endl;
     return answer;
 }
 
@@ -1628,7 +1628,7 @@ std::vector<join_result> Solution::n_star_durable_join_v2(std::map<int, std::vec
         }
     }
     clock_t te = clock();
-    std::cout << "overall time usage: " << (double) (te - ts + (sort_te - sort_ts) / 2) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "overall time usage: " << (double) (te - ts + (sort_te - sort_ts) / 2) / CLOCKS_PER_SEC << std::endl;
     return answer;
 }
 
@@ -1671,11 +1671,11 @@ void Solution::select_down(YannakakisJoinTreeNode* node, const std::vector<int>&
 void Solution::semi_join(YannakakisJoinTreeNode* base, YannakakisJoinTreeNode* filter) {
     std::unordered_set<std::vector<int>, VectorHasher> matching_values;
     // if (base == filter->parent) {
-    //     // std::cout << "base node: " << base->node_id << " filter node: " << filter->node_id << std::endl;
-    //     // std::cout << "filter keys: ";
+    //     // std::cerr << "base node: " << base->node_id << " filter node: " << filter->node_id << std::endl;
+    //     // std::cerr << "filter keys: ";
     //     // for (auto v : filter->non_dangling_join_values)
     //     //     print_vector(v);
-    //     // std::cout << "parent keys: ";
+    //     // std::cerr << "parent keys: ";
     //     // for (auto v : filter->parent_table)
     //     //     print_vector(v.first);
     //     for (auto& key : filter->non_dangling_join_values) {
@@ -1691,7 +1691,7 @@ void Solution::semi_join(YannakakisJoinTreeNode* base, YannakakisJoinTreeNode* f
     // }
     // if the join attrs are the same, directly search based on the join attrs
     if (base->join_attrs == filter->join_attrs) {
-        std::cout << "equal case" << std::endl; 
+        std::cerr << "equal case" << std::endl; 
         for (auto& item : base->origin_table) {
             std::vector<int> key = item.first;
             if (filter->non_dangling_join_values.find(key) != filter->non_dangling_join_values.end())
@@ -1786,7 +1786,7 @@ void Solution::semi_join(YannakakisJoinTreeNode* base, YannakakisJoinTreeNode* f
         }
         base->non_dangling_join_values = non_dangling_values;
     }
-    // std::cout << "matching values for node " << base->node_id << " : ";
+    // std::cerr << "matching values for node " << base->node_id << " : ";
     // for (auto values : base->non_dangling_join_values)
     //     print_vector(values);
 }
@@ -1972,7 +1972,7 @@ std::vector<join_result> Solution::durable_generic_join(std::map<int, std::vecto
     // get join values from generic join
     std::vector<std::vector<int>> join_values = generic_join(this->join_hash_index, global_join_attrs, index, global_join_attrs.size());
     clock_t te = clock();
-    std::cout << "generic join time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "generic join time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
     ts = clock();
     // do durability check
     for (auto& key : join_values) {
@@ -1993,13 +1993,13 @@ std::vector<join_result> Solution::durable_generic_join(std::map<int, std::vecto
             answer.emplace_back(item);
     }
     te = clock();
-    std::cout << "durability check time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "durability check time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
     return answer;
 }
 
 std::vector<std::vector<int>> Solution::generic_join(std::map<int, LevelHashMap*>& join_hash_index, std::vector<int>& global_join_attrs, int index, int join_attrs_count) {
     // the last join attr index
-    // std::cout << "current index: " << index << std::endl;
+    // std::cerr << "current index: " << index << std::endl;
     std::vector<std::vector<int>> result;
     if (index == join_attrs_count - 1) {
         std::set<int> unique_values = set_intersect(join_hash_index, global_join_attrs[index]);
@@ -2022,7 +2022,7 @@ std::vector<std::vector<int>> Solution::generic_join(std::map<int, LevelHashMap*
         for (auto partial_join_result : partial_answer) {
             partial_join_result[global_join_attrs[index]] = join_value;
             result.emplace_back(partial_join_result);
-            // std::cout << "get a partial answer!" << std::endl;
+            // std::cerr << "get a partial answer!" << std::endl;
             // print_vector(partial_join_result);
         }
     }
@@ -2056,10 +2056,10 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
     //     std::swap(last_intersection, curr_intersection);
     //     curr_intersection.clear();
     // }
-    // std::cout << "set intersect values: " << std::endl;
+    // std::cerr << "set intersect values: " << std::endl;
     // for (int v : answer)
-    //     std::cout << v << ',';
-    // std::cout << std::endl;
+    //     std::cerr << v << ',';
+    // std::cerr << std::endl;
     std::set<int> intersection;
     if (projected_join_tables[0].size() <= projected_join_tables[1].size()) {
         for (int v : projected_join_tables[0]) {
@@ -2126,7 +2126,7 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
 //     for (auto& item : join_tables) {
 //         int table_id = item.first;
 //         std::vector<join_result> table = item.second;
-//         // std::cout << table.size() << std::endl;
+//         // std::cerr << table.size() << std::endl;
 //         if (std::find(table[0].attr_id.begin(), table[0].attr_id.end(), index) != table[0].attr_id.end()) {
 //             std::set<int> values;
 //             for (auto& record : table)
@@ -2136,7 +2136,7 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
 //     }
 //     // set intersection
 //     if (projected_join_tables.size() == 1) {
-//         std::cout << "SHOULD NOT BE HERE!" << std::endl;
+//         std::cerr << "SHOULD NOT BE HERE!" << std::endl;
 //         return projected_join_tables[0];
 //     }
 //     std::vector<int> last_intersection(projected_join_tables[0].begin(), projected_join_tables[0].end());
@@ -2152,7 +2152,7 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
 // }
 
 // std::vector<join_result> Solution::generic_join(std::map<int, std::vector<join_result>>& join_tables, int index, int join_attrs_count, int durability) {
-//     // std::cout << "current join index: " << index << std::endl;
+//     // std::cerr << "current join index: " << index << std::endl;
 //     // the last join attr index
 //     if (index == join_attrs_count - 1) {
 //         return set_intersect(join_tables, index, durability);
@@ -2170,7 +2170,7 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
 //     }
 //     for (auto value_group : distinct_join_values) {
 //         int join_value = value_group.first;
-//         // std::cout << "current join index: " << index << " current join value: " << join_value << std::endl;
+//         // std::cerr << "current join index: " << index << " current join value: " << join_value << std::endl;
 //         // record.print();
 //         // process unique join values
 //         // if (distinct_join_value.find(join_value) == distinct_join_value.end()) {
@@ -2181,14 +2181,14 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
 //             int table_id = item.first;
 //             partial_join_tables[table_id] = select(item.second, table_id, index, join_value);
 //         }
-//         // std::cout << "partial join tables ready" << std::endl;
+//         // std::cerr << "partial join tables ready" << std::endl;
 //         // for (auto item : partial_join_tables) {
-//         //     std::cout << "=====table : " << item.first << std::endl;
+//         //     std::cerr << "=====table : " << item.first << std::endl;
 //         //     for (auto entry : item.second)
 //         //         entry.print();
 //         // }
 //         std::vector<join_result> partial_answer = generic_join(partial_join_tables, index+1, join_attrs_count, durability);
-//         // std::cout << "partial answers: " << std::endl;
+//         // std::cerr << "partial answers: " << std::endl;
 //         // for (auto item : partial_answer) {
 //         //     item.print();
 //         // }
@@ -2215,12 +2215,12 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
 //     //     if (record.attrs[index] == join_value)
 //     //         selected.emplace_back(record);
 //     // }
-//     // std::cout << join_table_index.at(0).at(0).at(646)[0] << std::endl; 
+//     // std::cerr << join_table_index.at(0).at(0).at(646)[0] << std::endl; 
 //     // for (int idx : join_table_index.at(table_id).at(index).at(join_value)) {
 //     std::vector<int> table_idx = join_table_index.at(table_id).at(index).at(join_value);
 //     // for (int i=0; i<join_table_index.at(table_id).at(index).at(join_value).size(); ++i) {
 //     // for (int idx : table_idx) {
-//     //     // std::cout << join_table_index.at(index).at(join_value).size() << std::endl;
+//     //     // std::cerr << join_table_index.at(index).at(join_value).size() << std::endl;
 //     //     // int index = join_table_index.at(table_id).at(index).at(join_value)[i];
 //     //     selected.emplace_back(table[idx]);
 //     // }
@@ -2233,11 +2233,11 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
 // std::vector<join_result> Solution::set_intersect(std::map<int, std::vector<join_result>>& join_tables, int index, int durability) {
 //     std::map<int, std::vector<join_result>> projected_join_tables;
 //     std::vector<int> join_order;
-//     // std::cout << "set intersecting" << std::endl;
+//     // std::cerr << "set intersecting" << std::endl;
 //     for (auto& item : join_tables) {
 //         int table_id = item.first;
 //         std::vector<join_result> table = item.second;
-//         // std::cout << table.size() << std::endl;
+//         // std::cerr << table.size() << std::endl;
 //         if (std::find(table[0].attr_id.begin(), table[0].attr_id.end(), index) != table[0].attr_id.end()) {
 //             projected_join_tables[table_id] = table;
 //             join_order.push_back(table_id);
@@ -2330,7 +2330,7 @@ int Solution::line_3_join_counting(std::vector<join_result>& left_table, std::ve
     te = clock();
     index_time += te - ts;
 
-    std::cout << "indexing time: " << (double) index_time / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "indexing time: " << (double) index_time / CLOCKS_PER_SEC << std::endl;
 
     
     std::vector<int> union_attrs = get_union(join_attrs[0], join_attrs[1]);
@@ -2376,8 +2376,8 @@ int Solution::line_3_join_counting(std::vector<join_result>& left_table, std::ve
     }
     te = clock();
     query_time = te - ts;
-    std::cout << "query time: " << (double) query_time / CLOCKS_PER_SEC << std::endl; 
-    std::cout << "total time usage: " << (double) (query_time + index_time) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "query time: " << (double) query_time / CLOCKS_PER_SEC << std::endl; 
+    std::cerr << "total time usage: " << (double) (query_time + index_time) / CLOCKS_PER_SEC << std::endl;
     return answer;
 }
 
@@ -2423,7 +2423,7 @@ std::vector<join_result> Solution::line_3_join(std::vector<join_result>& left_ta
     te = clock();
     index_time += te - ts;
 
-    std::cout << "indexing time: " << (double) index_time / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "indexing time: " << (double) index_time / CLOCKS_PER_SEC << std::endl;
 
     
     std::vector<int> union_attrs = get_union(join_attrs[0], join_attrs[1]);
@@ -2434,7 +2434,7 @@ std::vector<join_result> Solution::line_3_join(std::vector<join_result>& left_ta
     // simple line-3 algorithm
     int cnt = 0;
     for (auto & record : middle_table) {
-        // std::cout << "\r" << cnt << '/' << middle_table.size() << std::flush;
+        // std::cerr << "\r" << cnt << '/' << middle_table.size() << std::flush;
         cnt++;
         left_key = std::vector<int>(this->total_num_attrs, UNDEF);
         right_key = std::vector<int>(this->total_num_attrs, UNDEF);
@@ -2445,12 +2445,12 @@ std::vector<join_result> Solution::line_3_join(std::vector<join_result>& left_ta
         if (left_forest.find(left_key) == left_forest.end() || right_forest.find(right_key) == right_forest.end())
                 continue;
         if (left_table_intervals[left_key].size() <= right_table_intervals[right_key].size()) {
-            // std::cout << "=====left" << std::endl;
+            // std::cerr << "=====left" << std::endl;
             // print_vector(left_key);
-            // std::cout << left_forest[left_key]->intervals.size() << ' ' << record.t_start << ' ' << record.t_end << ' ' << durability << std::endl;
+            // std::cerr << left_forest[left_key]->intervals.size() << ' ' << record.t_start << ' ' << record.t_end << ' ' << durability << std::endl;
             intervalVector left_overlaps 
                 = left_forest[left_key]->findOverlapping_with_durability(record.t_start, record.t_end, durability);
-            // std::cout << "partial size: " << left_overlaps.size() << std::endl;
+            // std::cerr << "partial size: " << left_overlaps.size() << std::endl;
             if (left_overlaps.empty())
                 continue;
             for (auto &item : left_overlaps) {
@@ -2483,12 +2483,12 @@ std::vector<join_result> Solution::line_3_join(std::vector<join_result>& left_ta
             }
         }
         else {
-            // std::cout << "=====right" << std::endl;
+            // std::cerr << "=====right" << std::endl;
             // print_vector(right_key);
-            // std::cout << right_forest[right_key]->intervals.size() << ' ' << record.t_start << ' ' << record.t_end << ' ' << durability << std::endl;
+            // std::cerr << right_forest[right_key]->intervals.size() << ' ' << record.t_start << ' ' << record.t_end << ' ' << durability << std::endl;
             intervalVector right_overlaps
                 = right_forest[right_key]->findOverlapping_with_durability(record.t_start, record.t_end, durability);
-            // std::cout << "partial size: " << right_overlaps.size() << std::endl;
+            // std::cerr << "partial size: " << right_overlaps.size() << std::endl;
             if (right_overlaps.empty())
                 continue;
             for (auto &item : right_overlaps) {
@@ -2522,8 +2522,8 @@ std::vector<join_result> Solution::line_3_join(std::vector<join_result>& left_ta
     }
     te = clock();
     query_time = te - ts;
-    std::cout << "query time: " << (double) query_time / CLOCKS_PER_SEC << std::endl; 
-    std::cout << "total time usage: " << (double) (query_time + index_time) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "query time: " << (double) query_time / CLOCKS_PER_SEC << std::endl; 
+    std::cerr << "total time usage: " << (double) (query_time + index_time) / CLOCKS_PER_SEC << std::endl;
     return answer;
 }
 
@@ -2570,7 +2570,7 @@ std::vector<join_result> Solution::line_k_join(std::map<int, std::vector<join_re
     // }
     else
         right_table = multiway_durable_join_baseline(right_part, right_join_order, right_part_attrs, durability, -1);
-    // std::cout << left_table.size() << ' ' << middle_table.size() << ' ' << right_table.size() << std::endl;
+    // std::cerr << left_table.size() << ' ' << middle_table.size() << ' ' << right_table.size() << std::endl;
     if (!left_table.empty() && !middle_table.empty() && !right_table.empty()) {
         std::map<int, std::vector<int>> combined_join_attrs;
         combined_join_attrs[0] = left_table[0].attr_id;
@@ -2582,7 +2582,7 @@ std::vector<join_result> Solution::line_k_join(std::map<int, std::vector<join_re
         answer = line_3_join(left_table, middle_table, right_table, combined_join_attrs, durability);
     }
     te = clock();
-    std::cout << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
 
     return answer;
 }
@@ -2630,7 +2630,7 @@ int Solution::line_k_join_counting(std::map<int, std::vector<join_result>>& join
     // }
     else
         right_table = multiway_durable_join_baseline(right_part, right_join_order, right_part_attrs, durability);
-    // std::cout << left_table.size() << ' ' << middle_table.size() << ' ' << right_table.size() << std::endl;
+    // std::cerr << left_table.size() << ' ' << middle_table.size() << ' ' << right_table.size() << std::endl;
     if (!left_table.empty() && !middle_table.empty() && !right_table.empty()) {
         std::map<int, std::vector<int>> combined_join_attrs;
         combined_join_attrs[0] = left_table[0].attr_id;
@@ -2642,20 +2642,20 @@ int Solution::line_k_join_counting(std::map<int, std::vector<join_result>>& join
         answer += line_3_join_counting(left_table, middle_table, right_table, combined_join_attrs, durability);
     }
     te = clock();
-    std::cout << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
+    std::cerr << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << std::endl;
 
     return answer;
 }
 
 void Solution::setup_table_index(std::vector<int>& join_order, std::map<int, std::vector<join_result>>& join_tables) {
-    std::cout << "building hash tables...";
+    std::cerr << "building hash tables...";
     for (int table_id : join_order) {
         join_table_index[table_id] = std::unordered_map<std::vector<int>, std::vector<int>, VectorHasher>{};
         for (int idx=0; idx<join_tables[table_id].size(); ++idx) {
             join_table_index[table_id][join_tables[table_id][idx].attrs].push_back(idx);
         }
     }
-    std::cout << "done!" << std::endl;
+    std::cerr << "done!" << std::endl;
 }
 
 void Solution::build_level_hash_table(LevelHashMap* node, const join_result& record, std::vector<int>& join_attrs, int index) {
@@ -2672,11 +2672,11 @@ void Solution::build_level_hash_table(LevelHashMap* node, const join_result& rec
 }
 
 void Solution::setup_hash_index(std::vector<int>& join_order, std::map<int, std::vector<int>>& join_attrs, std::map<int, std::vector<join_result>>& join_tables) {
-    std::cout << "building hierarchical hash tables...";
+    std::cerr << "building hierarchical hash tables...";
     for (int table_id : join_order) {
         join_hash_index[table_id] = new LevelHashMap();
         for (auto& record : join_tables[table_id])
             build_level_hash_table(join_hash_index[table_id], record, join_attrs[table_id], 0);
     }
-    std::cout << "done!" << std::endl;
+    std::cerr << "done!" << std::endl;
 }

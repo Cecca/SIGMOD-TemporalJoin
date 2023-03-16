@@ -25,7 +25,7 @@ public:
     {}
 
     void print() {
-        std::cout << '[' << start << ',' << stop << ']' << ',' << value << std::endl;
+        std::cerr << '[' << start << ',' << stop << ']' << ',' << value << std::endl;
     }
 };
 
@@ -234,7 +234,7 @@ public:
     // Call f on all intervals overlapping [start, stop] with intersection greater than a given length
     template <class UnaryFunction>
     void visit_overlapping_with_durability(const Scalar& start, const Scalar& stop, int durability, UnaryFunction f) const {
-        // std::cout << "here:2" << std::endl;
+        // std::cerr << "here:2" << std::endl;
         auto filterF = [&](const interval& interval) {
             if (interval.stop >= start && interval.start <= stop) {
                 // Only apply f if overlapping and the intersection is greater than a give length
@@ -278,7 +278,7 @@ public:
 
     interval_vector findOverlapping_with_durability(const Scalar& start, const Scalar& stop, int durability) const {
         interval_vector result;
-        // std::cout << "here:1" << std::endl;
+        // std::cerr << "here:1" << std::endl;
         visit_overlapping_with_durability(start, stop, durability, 
                           [&](const interval& interval) { 
                             result.emplace_back(interval); 

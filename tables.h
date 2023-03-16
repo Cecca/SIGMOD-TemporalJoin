@@ -46,20 +46,20 @@ struct join_result {
     }
 
     void print() {
-        // std::cout << table_id << ' ';
-        // std::cout << '[';
+        // std::cerr << table_id << ' ';
+        // std::cerr << '[';
         // for (auto& v : id)
-        //     std::cout << v << ':';
-        // std::cout << "] ";
-        // std::cout << idx << " ";
-        std::cout << "[ ";
+        //     std::cerr << v << ':';
+        // std::cerr << "] ";
+        // std::cerr << idx << " ";
+        std::cerr << "[ ";
         for (auto& v : attrs)
-            std::cout << v << ' ';
-        std::cout << "] ";
-        std::cout << '[' << t_start << ',' << t_end << "] ";
+            std::cerr << v << ' ';
+        std::cerr << "] ";
+        std::cerr << '[' << t_start << ',' << t_end << "] ";
         // for (auto v : attr_id)
-        //     std::cout << v << ' ';
-        std::cout << std::endl;
+        //     std::cerr << v << ' ';
+        std::cerr << std::endl;
     }
 
     bool operator< (const join_result& a) const {
@@ -215,10 +215,10 @@ struct test_table {
     int t_start;
     int t_end;
     void print() {
-        std::cout << row << " : ";
+        std::cerr << row << " : ";
         for (auto& item : attrs)
-            std::cout << item << ' ';
-        std::cout << '[' << t_start << ',' << t_end << ']' << std::endl;
+            std::cerr << item << ' ';
+        std::cerr << '[' << t_start << ',' << t_end << ']' << std::endl;
     }
 };
 
@@ -248,9 +248,9 @@ struct taxi_table_basic {
         data[5] = te;
     }
     void print() {
-        std::cout << row << " : ";
-        std::cout << pickup_id << ' ' << dropoff_id << ' ';
-        std::cout << '[' << t_start << ',' << t_end << ']' << std::endl;
+        std::cerr << row << " : ";
+        std::cerr << pickup_id << ' ' << dropoff_id << ' ';
+        std::cerr << '[' << t_start << ',' << t_end << ']' << std::endl;
     }
     int row;
     int id;
