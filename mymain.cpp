@@ -8,10 +8,39 @@
 #include <fstream>
 #include <numeric>
 #include <chrono>
+#include <nlohmann/json.hpp>
 
 using namespace std::chrono;
 using namespace std;
+using json = nlohmann::json;
 
+#define INDEX_TIME 0
+#define JOIN_TIME 1
+
+struct Result {
+    clock_t starts[2];
+    double times[2];
+    uint64_t output_count;
+
+    Result(): starts{0,0}, times{0,0}, output_count(0) {}
+    
+    void start_timer(int timer) {
+        starts[timer] = clock();
+    }
+    void stop_timer(int timer) {
+        clock_t te = clock();
+        times[timer] = ((double) (te - starts[timer])) / CLOCKS_PER_SEC;
+    }
+
+    void print_json() {
+        json jobj = {
+            {"output_count", output_count},
+            {"time_index_s", times[INDEX_TIME]},
+            {"time_join_s", times[JOIN_TIME]},
+        };
+        std::cout << jobj << std::endl;
+    }
+};
 
 std::set<std::vector<int>> dedup(std::vector<join_result> answer, int durability) {
     set<vector<int>> distinct;
@@ -54,7 +83,7 @@ void dump_csv(std::set<std::vector<int>> distinct) {
 }
 
 void bowtie(std::string path, int durability, bool csv) {
-    clock_t ts, te;
+    Result res;
     TableLoader tl;
     tl.load_test_table(0, path, 2);
     tl.load_test_table(1);
@@ -77,7 +106,7 @@ void bowtie(std::string path, int durability, bool csv) {
     join_attrs[4] = vector<int>{1,2}; // BC
     join_attrs[5] = vector<int>{3,4}; // DE
 
-    ts = clock();
+    res.start_timer(INDEX_TIME);
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
@@ -85,18 +114,12 @@ void bowtie(std::string path, int durability, bool csv) {
     join_tables[4] = tl.prepare(4, total_num_attrs, vector<int>{0,1}, join_attrs[4], durability);
     join_tables[5] = tl.prepare(5, total_num_attrs, vector<int>{0,1}, join_attrs[5], durability);
 
-
-    te = clock();
-    clock_t filter_time = te - ts;
-
-    ts = clock();
     Solution durable_join(total_num_attrs);
     durable_join.setup_table_index(join_order, join_tables);
     durable_join.setup_hash_index(join_order, join_attrs, join_tables);
-    te = clock();
-    double index_time = ((double) te - ts) / CLOCKS_PER_SEC;
+    res.stop_timer(INDEX_TIME);
 
-    ts = clock();
+    res.start_timer(JOIN_TIME);
     vector<int> join_order_part_1 = {0,1,4};
     map<int, vector<join_result>> join_tables_part_1;
     map<int, vector<int>> join_attrs_part_1;
@@ -144,12 +167,8 @@ void bowtie(std::string path, int durability, bool csv) {
             distinct.insert(row);
         }
     }
-    te = clock();
-    double join_time = ((double) te - ts) / CLOCKS_PER_SEC;
-
-    cerr << "Found " << distinct.size() << " matching tuples" << endl;
-    cerr << "Index time " << index_time << endl;
-    cerr << "Join time " << join_time << endl;
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
 
     if (csv) {
         std::string csv_fname = "out.csv";
@@ -165,6 +184,7 @@ void bowtie(std::string path, int durability, bool csv) {
         }
         csv_out.close();
     }
+    res.print_json();
 
     // ts = clock();
     // vector<join_result> baseline = 
@@ -176,7 +196,7 @@ void bowtie(std::string path, int durability, bool csv) {
 }
 
 void triangles(std::string path, int durability, bool temporal, bool csv) {
-    clock_t ts, te;
+    Result res;
 
     // Load table
     TableLoader tl;
@@ -200,7 +220,7 @@ void triangles(std::string path, int durability, bool temporal, bool csv) {
     join_attrs[1] = vector<int>{1,2}; //BC
     join_attrs[2] = vector<int>{0,2}; //AC
     
-    ts = clock();
+    res.start_timer(INDEX_TIME);
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
@@ -211,11 +231,10 @@ void triangles(std::string path, int durability, bool temporal, bool csv) {
     // Setup the indices
     durable_join.setup_table_index(join_order, join_tables);
     durable_join.setup_hash_index(join_order, join_attrs, join_tables);
-    te = clock();
-    double time_index = ((double) te - ts) / CLOCKS_PER_SEC;
+    res.stop_timer(INDEX_TIME);
 
     // run the algorithm
-    ts = clock();
+    res.start_timer(JOIN_TIME);
     vector<join_result> answer = 
         durable_join.durable_generic_join(
             join_tables, join_order, join_attrs, 0, durability);
@@ -223,12 +242,9 @@ void triangles(std::string path, int durability, bool temporal, bool csv) {
     // In order to have the correct count of output tuples, 
     // we must remove duplicates from the output
     set<vector<int>> distinct = dedup(answer, durability);
-    te = clock();
-    double time_join = ((double) te - ts) / CLOCKS_PER_SEC;
-
-    cerr << "Found " << distinct.size() << " matching tuples" << endl;
-    cerr << "Index time " << time_index << endl;
-    cerr << "Join time " << time_join << endl;
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+    res.print_json();
 
     if (csv) {
         dump_csv(distinct);
@@ -236,7 +252,7 @@ void triangles(std::string path, int durability, bool temporal, bool csv) {
 }
 
 void cycle4(std::string path, int durability, bool temporal, bool csv) {
-    clock_t ts, te;
+    Result res;
 
     // Load table
     TableLoader tl;
@@ -263,7 +279,7 @@ void cycle4(std::string path, int durability, bool temporal, bool csv) {
     join_attrs[2] = vector<int>{2,3}; //CD
     join_attrs[3] = vector<int>{0,3}; //AD
     
-    ts = clock();
+    res.start_timer(INDEX_TIME);
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
@@ -275,11 +291,10 @@ void cycle4(std::string path, int durability, bool temporal, bool csv) {
     // Setup the indices
     durable_join.setup_table_index(join_order, join_tables);
     durable_join.setup_hash_index(join_order, join_attrs, join_tables);
-    te = clock();
-    double time_index = ((double) te - ts) / CLOCKS_PER_SEC;
+    res.stop_timer(INDEX_TIME);
 
     // run the algorithm
-    ts = clock();
+    res.start_timer(JOIN_TIME);
     vector<join_result> answer = 
         durable_join.durable_generic_join(
             join_tables, join_order, join_attrs, 0, durability);
@@ -287,12 +302,9 @@ void cycle4(std::string path, int durability, bool temporal, bool csv) {
     // In order to have the correct count of output tuples, 
     // we must remove duplicates from the output
     set<vector<int>> distinct = dedup(answer, durability);
-    te = clock();
-    double time_join = ((double) te - ts) / CLOCKS_PER_SEC;
-
-    cerr << "Found " << distinct.size() << " matching tuples" << endl;
-    cerr << "Index time " << time_index << endl;
-    cerr << "Join time " << time_join << endl;
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+    res.print_json();
 
     if (csv) {
         dump_csv(distinct);
@@ -300,7 +312,7 @@ void cycle4(std::string path, int durability, bool temporal, bool csv) {
 }
 
 void cycle5(std::string path, int durability, bool temporal, bool csv) {
-    clock_t ts, te;
+    Result res;
 
     // Load table
     TableLoader tl;
@@ -329,7 +341,7 @@ void cycle5(std::string path, int durability, bool temporal, bool csv) {
     join_attrs[3] = vector<int>{3,4}; //AD
     join_attrs[4] = vector<int>{0,4}; //AD
     
-    ts = clock();
+    res.start_timer(INDEX_TIME);
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
     join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability);
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
@@ -342,11 +354,10 @@ void cycle5(std::string path, int durability, bool temporal, bool csv) {
     // Setup the indices
     durable_join.setup_table_index(join_order, join_tables);
     durable_join.setup_hash_index(join_order, join_attrs, join_tables);
-    te = clock();
-    double time_index = ((double) te - ts) / CLOCKS_PER_SEC;
+    res.stop_timer(INDEX_TIME);
 
     // run the algorithm
-    ts = clock();
+    res.start_timer(JOIN_TIME);
     vector<join_result> answer = 
         durable_join.durable_generic_join(
             join_tables, join_order, join_attrs, 0, durability);
@@ -354,12 +365,9 @@ void cycle5(std::string path, int durability, bool temporal, bool csv) {
     // In order to have the correct count of output tuples, 
     // we must remove duplicates from the output
     set<vector<int>> distinct = dedup(answer, durability);
-    te = clock();
-    double time_join = ((double) te - ts) / CLOCKS_PER_SEC;
-
-    cerr << "Found " << distinct.size() << " matching tuples" << endl;
-    cerr << "Index time " << time_index << endl;
-    cerr << "Join time " << time_join << endl;
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+    res.print_json();
 
     if (csv) {
         dump_csv(distinct);
@@ -368,11 +376,30 @@ void cycle5(std::string path, int durability, bool temporal, bool csv) {
 
 
 int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "USAGE: MyMain config.json";
+        return 1;
+    }
+    std::string config_path = argv[1]; 
+    std::ifstream f(config_path);
+    json config = json::parse(f);
+
+    std::string query = config["query"];
+    if (query == "triangle") {
+        triangles(config["dataset"], config["durability"], true, false);
+    } else if (query == "cycle4") {
+        cycle4(config["dataset"], config["durability"], true, false);
+    } else if (query == "cycle5") {
+        cycle5(config["dataset"], config["durability"], true, false);
+    } else if (query == "bowtie") {
+        bowtie(config["dataset"], config["durability"], false);
+    } 
+
     // we need to use durability at least 1 to ensure that empty
     // intervals are not included in the output
     // triangles("data/flightgraph-dedup.csv", 1, true, true);
     // cycle4("data/flightgraph-dedup.csv", 1, true, true);
-    cycle5("data/flightgraph-dedup.csv", 1, true, true);
+    // cycle5("data/flightgraph-dedup.csv", 1, true, false);
     // bowtie("data/flightgraph-dedup.csv", 1, true);
     return 0;
 }

@@ -1,0 +1,15 @@
+Bootstrap: docker
+From: ubuntu:jammy-20230301
+
+%files
+  #CMakeLists /usr/src/join
+
+%post
+  apt-get update
+  apt-get install -y \
+    git \
+    curl \
+    make \
+    cmake \
+    g++
+    

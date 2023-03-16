@@ -1,0 +1,5 @@
+{
+    "query": "triangle",
+    "dataset": "data/flightgraph-dedup.csv",
+    "durability": 1
+}
