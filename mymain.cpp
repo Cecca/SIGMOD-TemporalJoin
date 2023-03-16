@@ -384,7 +384,7 @@ int main(int argc, char* argv[]) {
     std::ifstream f(config_path);
     json config = json::parse(f);
 
-    std::string query = config["query"];
+    std::string query = config["query_name"];
     if (query == "triangle") {
         triangles(config["dataset"], config["durability"], true, false);
     } else if (query == "cycle4") {
