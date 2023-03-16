@@ -1,5 +1,5 @@
 {
-    "query": "triangle",
+    "query_name": "bowtie",
     "dataset": "data/flightgraph-dedup.csv",
     "durability": 1
 }

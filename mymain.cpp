@@ -99,12 +99,12 @@ void bowtie(std::string path, int durability, bool csv) {
     
     // global join attrs id:
     // A:0, B:1, C:2, D:3, E:4
-    join_attrs[0] = vector<int>{0,1}; // AB
-    join_attrs[1] = vector<int>{0,2}; // AC
-    join_attrs[2] = vector<int>{0,3}; // AD
-    join_attrs[3] = vector<int>{0,4}; // AE
-    join_attrs[4] = vector<int>{1,2}; // BC
-    join_attrs[5] = vector<int>{3,4}; // DE
+    join_attrs[0] = vector<int>{0,1}; // AB   p1
+    join_attrs[1] = vector<int>{0,2}; // AC   p1
+    join_attrs[2] = vector<int>{0,3}; // AD   p2
+    join_attrs[3] = vector<int>{0,4}; // AE   p2
+    join_attrs[4] = vector<int>{1,2}; // BC   p1
+    join_attrs[5] = vector<int>{3,4}; // DE   p2
 
     res.start_timer(INDEX_TIME);
     join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
@@ -136,37 +136,21 @@ void bowtie(std::string path, int durability, bool csv) {
     }
     std::vector<join_result> final_answer;
     std::vector<join_result> part_1 = durable_join.durable_generic_join(join_tables_part_1, join_order_part_1, join_attrs_part_1, 0, durability);
-    std::cerr << part_1.size() << std::endl;
+    std::cerr << "part 1 size " << part_1.size() << std::endl;
     // part_1[0].print();
     std::vector<join_result> part_2 = durable_join.durable_generic_join(join_tables_part_2, join_order_part_2, join_attrs_part_2, 0, durability);
-    std::cerr << part_2.size() << std::endl;
+    std::cerr << "part 2 size " << part_2.size() << std::endl;
     // part_2[0].print();
     if (!part_1.empty() && !part_2.empty()) {
         std::vector<int> common_attrs = get_intersection(part_1[0].attr_id, part_2[0].attr_id);
-        cerr << "common attrs: ";
-        for (auto attr : common_attrs) { cerr << " " << attr; }
-        cerr << endl;
-
         std::vector<int> union_attrs = get_union(part_1[0].attr_id, part_2[0].attr_id);
-        cerr << "union attrs: ";
-        for (auto attr : union_attrs) { cerr << " " << attr; }
-        cerr << endl;
 
+        durable_join.sort_by_join_attrs(part_1, common_attrs);
+        durable_join.sort_by_join_attrs(part_2, common_attrs);
         final_answer = durable_join.pairwise_forward_scan_temporal_join(part_1, part_2, common_attrs, union_attrs, durability);
     }
 
-    set<vector<int>> distinct;
-    for (auto tup : final_answer) {
-        if (tup.t_end - tup.t_start >= durability) {
-            std::vector<int> row;
-            for (auto a : tup.attrs) {
-                row.push_back(a);
-            }
-            row.push_back(tup.t_start);
-            row.push_back(tup.t_end);
-            distinct.insert(row);
-        }
-    }
+    set<vector<int>> distinct = dedup(final_answer, durability);
     res.stop_timer(JOIN_TIME);
     res.output_count = distinct.size();
 
@@ -185,14 +169,6 @@ void bowtie(std::string path, int durability, bool csv) {
         csv_out.close();
     }
     res.print_json();
-
-    // ts = clock();
-    // vector<join_result> baseline = 
-    //     durable_join.multiway_durable_join_baseline(join_tables, join_order, join_attrs, durability, -1);
-    // te = clock();
-    // cerr << "ground truth size: " << baseline.size() << ' '
-    //         << "time usage: " << (double) (te - ts) / CLOCKS_PER_SEC << ' '
-    //         << "filter time: " << (double) filter_time / CLOCKS_PER_SEC << endl;
 }
 
 void triangles(std::string path, int durability, bool temporal, bool csv) {
@@ -374,6 +350,74 @@ void cycle5(std::string path, int durability, bool temporal, bool csv) {
     }
 }
 
+void clique4(std::string path, int durability, bool csv) {
+    Result res;
+
+    // Load table
+    TableLoader tl;
+    // AB
+    tl.load_test_table(0, path, 2);
+    // BC
+    tl.load_test_table(1);
+    // CD
+    tl.load_test_table(2);
+    // AD
+    tl.load_test_table(3);
+    // AC
+    tl.load_test_table(4);
+    // BD
+    tl.load_test_table(5);
+
+    // Define the join order
+    vector<int> join_order = vector<int>{0,1,2,3,4,5};
+
+    // Define the join attributes and the tables
+    map<int, vector<int>> join_attrs;
+    map<int, vector<join_result>> join_tables;
+
+    int total_num_attrs = 4;
+    // Join attribute ids
+    join_attrs[0] = vector<int>{0,1}; //AB
+    join_attrs[1] = vector<int>{0,2}; //AC
+    join_attrs[2] = vector<int>{0,3}; //AD
+    join_attrs[3] = vector<int>{1,2}; //BC
+    join_attrs[4] = vector<int>{1,3}; //BD
+    join_attrs[5] = vector<int>{2,3}; //CD
+    
+    res.start_timer(INDEX_TIME);
+    join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
+    join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability);
+    join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
+    join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0,1}, join_attrs[3], durability);
+    join_tables[4] = tl.prepare(4, total_num_attrs, vector<int>{0,1}, join_attrs[4], durability);
+    join_tables[5] = tl.prepare(5, total_num_attrs, vector<int>{0,1}, join_attrs[5], durability);
+
+    // Instantiate the algorithm
+    Solution durable_join(total_num_attrs);
+    
+    // Setup the indices
+    durable_join.setup_table_index(join_order, join_tables);
+    durable_join.setup_hash_index(join_order, join_attrs, join_tables);
+    res.stop_timer(INDEX_TIME);
+
+    // run the algorithm
+    res.start_timer(JOIN_TIME);
+   vector<join_result> answer = 
+        durable_join.durable_generic_join(
+            join_tables, join_order, join_attrs, 0, durability);
+
+    // In order to have the correct count of output tuples, 
+    // we must remove duplicates from the output
+    set<vector<int>> distinct = dedup(answer, durability);
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+    res.print_json();
+
+    if (csv) {
+        dump_csv(distinct);
+    }
+}
+
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -392,7 +436,9 @@ int main(int argc, char* argv[]) {
     } else if (query == "cycle5") {
         cycle5(config["dataset"], config["durability"], true, false);
     } else if (query == "bowtie") {
-        bowtie(config["dataset"], config["durability"], false);
+        bowtie(config["dataset"], config["durability"], true);
+    } else if (query == "clique4") {
+        clique4(config["dataset"], config["durability"], true);
     } 
 
     // we need to use durability at least 1 to ensure that empty

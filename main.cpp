@@ -2082,7 +2082,6 @@ void dblpGenericJoinTest(int durability) {
     join_tables[4] = tl.prepare(4, total_num_attrs, vector<int>{0,1}, join_attrs[4], durability);
     join_tables[5] = tl.prepare(5, total_num_attrs, vector<int>{0,1}, join_attrs[5], durability);
 
-
     te = clock();
     clock_t filter_time = te - ts;
 
