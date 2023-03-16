@@ -418,6 +418,123 @@ void clique4(std::string path, int durability, bool csv) {
     }
 }
 
+void line3(std::string graph, int durability, bool csv) {
+    Result res;
+    TableLoader tl;
+
+    tl.load_test_table(0, graph, 2);
+    tl.load_test_table(1);
+    tl.load_test_table(2);
+
+    vector<int> join_order = vector<int>{0,1,2};
+    map<int, vector<int>> join_attrs;
+    map<int, vector<join_result>> join_tables;
+    int total_num_attrs = 4;
+    
+    // global join attrs id:
+    // A:0, B:1, C:2, D:3, E:4
+    join_attrs[0] = vector<int>{0,1}; // B
+    join_attrs[1] = vector<int>{1,2}; // BC
+    join_attrs[2] = vector<int>{2,3}; // C
+
+    res.start_timer(INDEX_TIME);
+    join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
+    join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability);
+    join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
+    res.stop_timer(INDEX_TIME);
+
+    Solution durable_join(total_num_attrs);
+
+    res.start_timer(JOIN_TIME);
+    vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, durability);
+    set<vector<int>> distinct = dedup(answer, durability);
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+
+    if (csv) {
+        dump_csv(distinct);
+    }
+    res.print_json();
+}
+void line4(std::string graph, int durability) {
+    Result res;
+    TableLoader tl;
+
+    tl.load_test_table(0, graph, 2);
+    tl.load_test_table(1);
+    tl.load_test_table(2);
+    tl.load_test_table(3);
+
+    vector<int> join_order = vector<int>{0,1,2,3};
+    map<int, vector<int>> join_attrs;
+    map<int, vector<join_result>> join_tables;
+    int total_num_attrs = 5;
+    
+    // global join attrs id:
+    // A:0, B:1, C:2, D:3, E:4
+    join_attrs[0] = vector<int>{0,1}; // B
+    join_attrs[1] = vector<int>{1,2}; // BC
+    join_attrs[2] = vector<int>{2,3}; // CD
+    join_attrs[3] = vector<int>{3,4}; // DE
+
+    res.start_timer(INDEX_TIME);
+    join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability, true);
+    join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
+    join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability, true);
+    join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0,1}, join_attrs[3], durability, true);
+    res.stop_timer(INDEX_TIME);
+
+    Solution durable_join(total_num_attrs);
+
+    res.start_timer(JOIN_TIME);
+    vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, durability);
+    set<vector<int>> distinct = dedup(answer, durability);
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+
+    res.print_json();
+}
+void line5(std::string graph, int durability) {
+    Result res;
+    TableLoader tl;
+
+    tl.load_test_table(0, graph, 2);
+    tl.load_test_table(1);
+    tl.load_test_table(2);
+    tl.load_test_table(3);
+    tl.load_test_table(4);
+
+    vector<int> join_order = vector<int>{0,1,2,3,4};
+    map<int, vector<int>> join_attrs;
+    map<int, vector<join_result>> join_tables;
+    int total_num_attrs = 6;
+    
+    // global join attrs id:
+    // A:0, B:1, C:2, D:3, E:4
+    join_attrs[0] = vector<int>{0,1}; // B
+    join_attrs[1] = vector<int>{1,2}; // BC
+    join_attrs[2] = vector<int>{2,3}; // CD
+    join_attrs[3] = vector<int>{3,4}; // DE
+    join_attrs[4] = vector<int>{4,5}; // DE
+
+    res.start_timer(INDEX_TIME);
+    join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability, true);
+    join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{0,1}, join_attrs[1], durability, true);
+    join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability, true);
+    join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0,1}, join_attrs[3], durability, true);
+    join_tables[4] = tl.prepare(4, total_num_attrs, vector<int>{0,1}, join_attrs[4], durability, true);
+    res.stop_timer(INDEX_TIME);
+
+    Solution durable_join(total_num_attrs);
+
+    res.start_timer(JOIN_TIME);
+    vector<join_result> answer = durable_join.line_k_join(join_tables, join_attrs, durability);
+    set<vector<int>> distinct = dedup(answer, durability);
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+
+    res.print_json();
+}
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -436,9 +553,15 @@ int main(int argc, char* argv[]) {
     } else if (query == "cycle5") {
         cycle5(config["dataset"], config["durability"], true, false);
     } else if (query == "bowtie") {
-        bowtie(config["dataset"], config["durability"], true);
+        bowtie(config["dataset"], config["durability"], false);
     } else if (query == "clique4") {
-        clique4(config["dataset"], config["durability"], true);
+        clique4(config["dataset"], config["durability"], false);
+    } else if (query == "line3") {
+        line3(config["dataset"], config["durability"], true);
+    } else if (query == "line4") {
+        line4(config["dataset"], config["durability"]);
+    } else if (query == "line5") {
+        line5(config["dataset"], config["durability"]);
     } 
 
     // we need to use durability at least 1 to ensure that empty

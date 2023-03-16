@@ -5,7 +5,7 @@ container:
     apptainer build --force container.sif container.def
 
 run: build
-    build/MyMain example-spec.json
+    build/MyMain example-spec.json | jq .
 
 bench: build
     hyperfine build/MyMain
