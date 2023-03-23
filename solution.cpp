@@ -2047,6 +2047,9 @@ std::set<int> Solution::set_intersect(std::map<int, LevelHashMap*>& join_table_i
         if (item.second->join_attr_id == index) 
             projected_join_tables.emplace_back(item.second->base_key);
     }
+    // std::cerr << "projected_join_tables: " << projected_join_tables.size() 
+    //           << " attribute " << index
+    //           << std::endl;
     // assert(projected_join_tables.size() == 2);
     // std::set<int> last_intersection = projected_join_tables[0];
     // std::set<int> curr_intersection;

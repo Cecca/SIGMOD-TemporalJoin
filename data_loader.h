@@ -3,6 +3,7 @@
 
 #include "utility.h"
 #include "tables.h"
+#include <exception>
 #include <map>
 #include <vector>
 #include <string>
@@ -173,8 +174,10 @@ void TableLoader::load_test_table(const int id) {
 
 void TableLoader::load_test_table(const int id, const std::string filename, int num_of_attrs) {
     std::ifstream fin(filename);
-	if (!fin)
-		std::cerr << "FILE ERROR" << std::endl;
+    if (!fin) {
+        std::cerr << "FILE ERROR" << std::endl;
+        throw std::exception();
+    }
     
     std::cerr << "load tables from " << filename << std::endl;
 

@@ -1,5 +1,6 @@
 {
-    "query_name": "line5",
-    "dataset": "data/flightgraph-dedup.csv",
+    "query_name": "employee-cycle",
+    "dept": "data/dept_emp_slim_2k.csv",
+    "titles": "data/titles_slim_2k.csv",
     "durability": 1
 }

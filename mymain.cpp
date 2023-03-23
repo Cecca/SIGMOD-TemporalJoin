@@ -171,7 +171,7 @@ void bowtie(std::string path, int durability, bool csv) {
     res.print_json();
 }
 
-void triangles(std::string path, int durability, bool temporal, bool csv) {
+void triangles(std::string path, int durability, bool csv) {
     Result res;
 
     // Load table
@@ -227,7 +227,7 @@ void triangles(std::string path, int durability, bool temporal, bool csv) {
     }
 }
 
-void cycle4(std::string path, int durability, bool temporal, bool csv) {
+void cycle4(std::string path, int durability, bool csv) {
     Result res;
 
     // Load table
@@ -287,7 +287,7 @@ void cycle4(std::string path, int durability, bool temporal, bool csv) {
     }
 }
 
-void cycle5(std::string path, int durability, bool temporal, bool csv) {
+void cycle5(std::string path, int durability, bool csv) {
     Result res;
 
     // Load table
@@ -536,6 +536,66 @@ void line5(std::string graph, int durability) {
     res.print_json();
 }
 
+void employee_cycle(std::string path_dept, std::string path_title, int durability, bool csv) {
+    Result res;
+
+    // Load table
+    TableLoader tl;
+    // emp_a, dept 0,1
+    tl.load_test_table(0, path_dept, 2);
+    // emp_b, dept 2,1
+    tl.load_test_table(1, path_dept, 2);
+    // emp_a, title 0,3
+    tl.load_test_table(2, path_title, 2);
+    // emp_b, title 2,3
+    tl.load_test_table(3, path_title, 2);
+
+    // Define the join order
+    vector<int> join_order = vector<int>{0,1,2,3};
+
+    // Define the join attributes and the tables
+    map<int, vector<int>> join_attrs;
+    map<int, vector<join_result>> join_tables;
+
+    int total_num_attrs = 4;
+    // Join attribute ids
+    join_attrs[0] = vector<int>{0,1}; // emp_a, dept
+    join_attrs[1] = vector<int>{1,2}; // dept, emp_b
+    join_attrs[2] = vector<int>{0,3}; // emp_a, title
+    join_attrs[3] = vector<int>{2,3}; // emp_b, title
+    
+    res.start_timer(INDEX_TIME);
+    join_tables[0] = tl.prepare(0, total_num_attrs, vector<int>{0,1}, join_attrs[0], durability);
+    join_tables[1] = tl.prepare(1, total_num_attrs, vector<int>{1,0}, join_attrs[1], durability);
+    join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
+    join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0,1}, join_attrs[3], durability);
+
+    // Instantiate the algorithm
+    Solution durable_join(total_num_attrs);
+    
+    // Setup the indices
+    durable_join.setup_table_index(join_order, join_tables);
+    durable_join.setup_hash_index(join_order, join_attrs, join_tables);
+    res.stop_timer(INDEX_TIME);
+
+    // run the algorithm
+    res.start_timer(JOIN_TIME);
+    vector<join_result> answer = 
+        durable_join.durable_generic_join(
+            join_tables, join_order, join_attrs, 0, durability);
+
+    // In order to have the correct count of output tuples, 
+    // we must remove duplicates from the output
+    set<vector<int>> distinct = dedup(answer, durability);
+    res.stop_timer(JOIN_TIME);
+    res.output_count = distinct.size();
+    res.print_json();
+
+    if (csv) {
+        dump_csv(distinct);
+    }
+}
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "USAGE: MyMain config.json";
@@ -547,22 +607,24 @@ int main(int argc, char* argv[]) {
 
     std::string query = config["query_name"];
     if (query == "triangle") {
-        triangles(config["dataset"], config["durability"], true, false);
+        triangles(config["dataset"], config["durability"], false);
     } else if (query == "cycle4") {
-        cycle4(config["dataset"], config["durability"], true, false);
+        cycle4(config["dataset"], config["durability"], false);
     } else if (query == "cycle5") {
-        cycle5(config["dataset"], config["durability"], true, false);
+        cycle5(config["dataset"], config["durability"], false);
     } else if (query == "bowtie") {
         bowtie(config["dataset"], config["durability"], false);
     } else if (query == "clique4") {
         clique4(config["dataset"], config["durability"], false);
     } else if (query == "line3") {
-        line3(config["dataset"], config["durability"], true);
+        line3(config["dataset"], config["durability"], false);
     } else if (query == "line4") {
         line4(config["dataset"], config["durability"]);
     } else if (query == "line5") {
         line5(config["dataset"], config["durability"]);
-    } 
+    } else if (query == "employee-cycle") {
+        employee_cycle(config["dept"], config["titles"], config["durability"], true);
+    }
 
     // we need to use durability at least 1 to ensure that empty
     // intervals are not included in the output
