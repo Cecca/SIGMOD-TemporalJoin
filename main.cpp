@@ -557,7 +557,8 @@ void Cyclic4Join(int durability) {
     clock_t ts, te;
     TableLoader tl;
 
-    tl.load_test_table(0, "/usr/project/xtmp/jygao/flight-db/flights_slim.csv", 2);
+    // tl.load_test_table(0, "/usr/project/xtmp/jygao/flight-db/flights_slim.csv", 2);
+    tl.load_test_table(0, "data/test-db/R1_AB.txt", 2);
     tl.load_test_table(1);
     tl.load_test_table(2);
     tl.load_test_table(3);
@@ -640,6 +641,7 @@ void Cyclic4Join(int durability) {
     hybrid_join_attrs[1] = partial_2[0].attr_id;
     ts = clock();
     vector<join_result> hybrid_answer = durable_join.n_star_durable_join_v2(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
+    assert(hybrid_answer[0].attrs.size() > 0);
     te = clock();
     total += te - ts;
     cerr << "hybrid answer size: " << hybrid_answer.size() << ' '

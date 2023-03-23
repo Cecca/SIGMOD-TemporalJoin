@@ -7,6 +7,9 @@
 #include <vector>
 #include <tuple>
 
+static uint64_t value_comparisons = 0;
+static uint64_t temporal_comparisons = 0;
+
 typedef IntervalTree<int, int> intervalTree;
 typedef intervalTree::interval interval;
 typedef intervalTree::interval_vector intervalVector;

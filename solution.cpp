@@ -1603,14 +1603,26 @@ std::vector<join_result> Solution::n_star_durable_join_v2(std::map<int, std::vec
                         for (auto& record : last_answer) {
                             for (int idx : candidate) {
                                 join_result join_record = join_tables[join_order[i]][idx];
+                                assert(join_record.attrs.size());
                                 join_result match;
                                 match.id = record.id;
                                 for (auto& v : join_record.id)
                                     match.id.push_back(v);
-                                for (int j=0; j<match.attrs.size(); ++j) {
-                                    match.attrs[j] = record.attrs[j];
-                                    match.attrs[j] = join_record.attrs[j];
+                                // The original code here was iterating over the indices
+                                // spanning `match.attrs`, which however are 0.
+                                // As a result, the output tuples were simply empty.
+                                assert(record.attrs.size() == join_record.attrs.size());
+                                for (int j=0; j<record.attrs.size(); ++j) {
+                                    auto a = std::max(record.attrs[j], join_record.attrs[j]);
+                                    // std::cerr 
+                                    //     << "record.attrs[j] " << record.attrs[j]
+                                    //     << "join_record.attrs[j]" << join_record.attrs[j]
+                                    //     << std::endl;
+                                    match.attrs.emplace_back(a);
+                                    // match.attrs[j] = record.attrs[j];
+                                    // match.attrs[j] = join_record.attrs[j];
                                 }
+                                assert(match.attrs.size() > 0);
                                 curr_answer.push_back(match);
                             }
                         }
@@ -1618,8 +1630,10 @@ std::vector<join_result> Solution::n_star_durable_join_v2(std::map<int, std::vec
                         curr_answer.clear();
                     }
                 }
-                for (auto& item : last_answer)
+                for (auto& item : last_answer) {
                     answer.emplace_back(item);
+                    // item.print();
+                }
             }
             active_tuples[table_id][join_value].erase(record_idx);
             if (active_tuples[table_id][join_value].empty())

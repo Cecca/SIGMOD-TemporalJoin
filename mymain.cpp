@@ -48,6 +48,7 @@ std::set<std::vector<int>> dedup(std::vector<join_result> answer, int durability
     
     clock_t ts = clock();
     for (auto tup : answer) {
+        assert(tup.attrs.size() > 0);
         if (tup.t_end - tup.t_start >= durability) {
             std::vector<int> row;
             for (auto a : tup.attrs) {
@@ -261,23 +262,61 @@ void cycle4(std::string path, int durability, bool csv) {
     join_tables[2] = tl.prepare(2, total_num_attrs, vector<int>{0,1}, join_attrs[2], durability);
     join_tables[3] = tl.prepare(3, total_num_attrs, vector<int>{0,1}, join_attrs[3], durability);
 
-    // Instantiate the algorithm
+    // Instantiate and run the algorithm
     Solution durable_join(total_num_attrs);
-    
-    // Setup the indices
-    durable_join.setup_table_index(join_order, join_tables);
-    durable_join.setup_hash_index(join_order, join_attrs, join_tables);
-    res.stop_timer(INDEX_TIME);
-
-    // run the algorithm
     res.start_timer(JOIN_TIME);
-    vector<join_result> answer = 
-        durable_join.durable_generic_join(
-            join_tables, join_order, join_attrs, 0, durability);
-
+    vector<int> partial_join_order_1 = vector<int>{0,1};
+    map<int, vector<int>> partial_join_attrs_1;
+    map<int, vector<join_result>> partial_join_tables_1;
+    for (int id : partial_join_order_1) {
+        partial_join_attrs_1[id] = join_attrs[id];
+        partial_join_tables_1[id] = join_tables[id];
+    }
+    vector<int> partial_join_order_2 = vector<int>{2,3};
+    map<int, vector<int>> partial_join_attrs_2;
+    map<int, vector<join_result>> partial_join_tables_2;
+    for (int id : partial_join_order_2) {
+        partial_join_attrs_2[id] = join_attrs[id];
+        partial_join_tables_2[id] = join_tables[id];
+    }
+    vector<join_result> partial_1 = durable_join.multiway_durable_join_baseline(partial_join_tables_1, partial_join_order_1, partial_join_attrs_1, -1, -1);
+    for (int i=0; i<partial_1.size(); ++i) {
+        partial_1[i].table_id = 0;
+        partial_1[i].idx = i;
+    }
+    assert(partial_1[0].attrs.size() > 0);
+    vector<join_result> partial_2 = durable_join.multiway_durable_join_baseline(partial_join_tables_2, partial_join_order_2, partial_join_attrs_2, -1, -1);
+    for (int i=0; i<partial_2.size(); ++i) {
+        // for (auto a : partial_2[i].attrs) {
+        //     cerr << a << " ";
+        // }
+        // cerr << endl;
+        partial_2[i].table_id = 1;
+        partial_2[i].idx = i;
+    }
+    assert(partial_2[0].attrs.size() > 0);
+    map<int, vector<join_result>> hybrid_tables;
+    map<int, vector<int>> hybrid_join_attrs;
+    vector<int> hybrid_join_order = {0,1};
+    hybrid_tables[0] = partial_1;
+    hybrid_tables[1] = partial_2;
+    hybrid_join_attrs[0] = partial_1[0].attr_id;
+    hybrid_join_attrs[1] = partial_2[0].attr_id;
+    cerr << "hybrid_join_attrs[0] = ";
+    for (auto a : hybrid_join_attrs[0]) {
+        cerr << a << ",";
+    }
+    cerr << endl;
+    cerr << "hybrid_join_attrs[1] = ";
+    for (auto a : hybrid_join_attrs[1]) {
+        cerr << a << ",";
+    }
+    cerr << endl;
+    vector<join_result> hybrid_answer = durable_join.n_star_durable_join_v2(hybrid_tables, hybrid_join_order, hybrid_join_attrs);
+    
     // In order to have the correct count of output tuples, 
     // we must remove duplicates from the output
-    set<vector<int>> distinct = dedup(answer, durability);
+    set<vector<int>> distinct = dedup(hybrid_answer, durability);
     res.stop_timer(JOIN_TIME);
     res.output_count = distinct.size();
     res.print_json();
@@ -609,7 +648,7 @@ int main(int argc, char* argv[]) {
     if (query == "triangle") {
         triangles(config["dataset"], config["durability"], false);
     } else if (query == "cycle4") {
-        cycle4(config["dataset"], config["durability"], false);
+        cycle4(config["dataset"], config["durability"], true);
     } else if (query == "cycle5") {
         cycle5(config["dataset"], config["durability"], false);
     } else if (query == "bowtie") {
@@ -623,7 +662,7 @@ int main(int argc, char* argv[]) {
     } else if (query == "line5") {
         line5(config["dataset"], config["durability"]);
     } else if (query == "employee-cycle") {
-        employee_cycle(config["dept"], config["titles"], config["durability"], true);
+        employee_cycle(config["dept"], config["titles"], config["durability"], false);
     }
 
     // we need to use durability at least 1 to ensure that empty
